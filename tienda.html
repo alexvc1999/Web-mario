@@ -29,6 +29,7 @@
     <a href="cesta.html" class="cart-btn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Cesta
+      <span class="cart-count" id="cartCount">0</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
@@ -54,21 +55,25 @@
           <div class="img-ph"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
           <span class="catalog-card-name">Ramo Pastel</span>
           <span class="catalog-card-price">45.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/RAMO PRESERVADO.png" alt="Ramo Preservado"></div>
           <span class="catalog-card-name">Ramo Preservado</span>
           <span class="catalog-card-price">60.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/ramo girasoles.png" alt="Ramo de Girasoles"></div>
           <span class="catalog-card-name">Ramo de Girasoles</span>
           <span class="catalog-card-price">45.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/Ramo variado.png" alt="Ramo Variado"></div>
           <span class="catalog-card-name">Ramo Variado</span>
           <span class="catalog-card-price">45.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
       </div>
     </div>
@@ -79,21 +84,25 @@
           <div class="img-ph"><img class="img-contain" src="fotos web/ramo blanco.png" alt="Ramo Blanco"></div>
           <span class="catalog-card-name">Ramo Blanco</span>
           <span class="catalog-card-price">55.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo Rosas"></div>
           <span class="catalog-card-name">Ramo Rosas</span>
           <span class="catalog-card-price">60.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/ramo + jarrón.png" alt="Jarrón + Ramo"></div>
           <span class="catalog-card-name">Jarrón + Ramo</span>
           <span class="catalog-card-price">35.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/bouquet rainbow.png" alt="Bouquet Rainbow"></div>
           <span class="catalog-card-name">Bouquet Rainbow</span>
           <span class="catalog-card-price">45.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
       </div>
     </div>
@@ -104,21 +113,25 @@
           <div class="img-ph"><img class="img-contain" src="fotos web/orquídea blanca.png" alt="Orquídea Blanca"></div>
           <span class="catalog-card-name">Orquídea Blanca</span>
           <span class="catalog-card-price">30.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/Ramo_variado.png" alt="Ramo Rosado"></div>
           <span class="catalog-card-name">Ramo Rosado</span>
           <span class="catalog-card-price">45.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/regalo + ramo.png" alt="Pack Regalo"></div>
           <span class="catalog-card-name">Pack Regalo</span>
           <span class="catalog-card-price">50.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
         <div class="catalog-card">
           <div class="img-ph"><img class="img-contain" src="fotos web/caja floral preservada.png" alt="Caja Preservada"></div>
           <span class="catalog-card-name">Caja Preservada</span>
           <span class="catalog-card-price">50.00€</span>
+          <button class="catalog-add-btn" type="button">Añadir a la cesta</button>
         </div>
       </div>
     </div>
@@ -203,6 +216,56 @@
       var o=n.classList.toggle('open');
       t.setAttribute('aria-expanded',o?'true':'false');
     });
+  })();
+
+  (function(){
+    var count=document.getElementById('cartCount');
+    var buttons=document.querySelectorAll('.catalog-add-btn');
+
+    function getCart(){
+      return JSON.parse(localStorage.getItem('tripianaCesta') || '[]');
+    }
+
+    function saveCart(cart){
+      localStorage.setItem('tripianaCesta',JSON.stringify(cart));
+      updateCount();
+    }
+
+    function updateCount(){
+      var cart=getCart();
+      var total=0;
+      cart.forEach(function(item){ total=total+item.qty; });
+      if(count) count.textContent=total;
+    }
+
+    buttons.forEach(function(button){
+      button.addEventListener('click',function(){
+        var card=button.closest('.catalog-card');
+        var name=card.querySelector('.catalog-card-name').textContent;
+        var priceText=card.querySelector('.catalog-card-price').textContent;
+        var img=card.querySelector('img').getAttribute('src');
+        var price=parseFloat(priceText.replace(',','.'));
+        var cart=getCart();
+        var found=cart.find(function(item){ return item.name===name; });
+
+        if(found){
+          found.qty=found.qty+1;
+        }else{
+          cart.push({name:name,price:price,img:img,qty:1});
+        }
+
+        saveCart(cart);
+        card.classList.add('added');
+        button.textContent='Añadido';
+
+        setTimeout(function(){
+          card.classList.remove('added');
+          button.textContent='Añadir a la cesta';
+        },900);
+      });
+    });
+
+    updateCount();
   })();
 </script>
 </body>

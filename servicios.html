@@ -128,15 +128,33 @@
 <!-- TESTIMONIAL -->
 <section class="testimonial-section">
   <div class="container">
-    <p class="testimonial-quote">“Cada detalle floral marcó la diferencia. Entendieron exactamente el estilo que buscábamos y lo llevaron a la realidad con una delicadeza preciosa.”</p>
-    <div class="testimonial-avatar">
-      <div class="img-ph"><img class="img-real" src="fotos web/foto_jero.png" alt="Cristina"></div>
+    <div class="testimonial-carousel">
+      <div class="testimonial-slide active">
+        <p class="testimonial-quote">“Cada detalle floral marcó la diferencia. Entendieron exactamente el estilo que buscábamos y lo llevaron a la realidad con una delicadeza preciosa.”</p>
+        <div class="testimonial-avatar">
+          <div class="img-ph"><img class="img-real" src="fotos web/foto_jero.png" alt="Cristina"></div>
+        </div>
+        <p class="testimonial-name">Cristina</p>
+      </div>
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">“Prepararon una decoración muy elegante para nuestro evento. Todo llegó a tiempo y con una presentación impecable.”</p>
+        <div class="testimonial-avatar">
+          <div class="img-ph"><img class="img-real" src="fotos web/FLORISTERIA_JERO.jpg" alt="María"></div>
+        </div>
+        <p class="testimonial-name">María</p>
+      </div>
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">“Nos guiaron con mucho gusto y consiguieron que cada arreglo encajara con el espacio. Quedó sencillo, fino y precioso.”</p>
+        <div class="testimonial-avatar">
+          <div class="img-ph"><img class="img-real" src="fotos web/coche con flores ok.jpg" alt="Laura"></div>
+        </div>
+        <p class="testimonial-name">Laura</p>
+      </div>
     </div>
-    <p class="testimonial-name">Cristina</p>
     <div class="testimonial-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <button class="dot active" type="button" aria-label="Testimonio 1"></button>
+      <button class="dot" type="button" aria-label="Testimonio 2"></button>
+      <button class="dot" type="button" aria-label="Testimonio 3"></button>
     </div>
   </div>
 </section>
@@ -218,6 +236,37 @@
     t.addEventListener('click',function(){
       var o=n.classList.toggle('open');
       t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  })();
+
+  (function(){
+    var sections=document.querySelectorAll('.testimonial-section');
+    sections.forEach(function(section){
+      var slides=section.querySelectorAll('.testimonial-slide');
+      var dots=section.querySelectorAll('.testimonial-dots .dot');
+      var current=0;
+
+      if(slides.length<2)return;
+
+      function showSlide(index){
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current=index;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      dots.forEach(function(dot,index){
+        dot.addEventListener('click',function(){
+          showSlide(index);
+        });
+      });
+
+      setInterval(function(){
+        var next=current+1;
+        if(next>=slides.length)next=0;
+        showSlide(next);
+      },4000);
     });
   })();
 </script>

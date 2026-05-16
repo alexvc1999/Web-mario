@@ -33,6 +33,7 @@
     <a href="cesta.html" class="cart-btn" style="background:rgba(255,255,255,.15)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Cesta
+      <span class="cart-count" id="cartCount">0</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
@@ -51,6 +52,7 @@
 <!-- CART CONTENT -->
 <section class="cart-section">
   <div class="container">
+    <div class="cart-empty" id="cartEmpty" style="display:none">Tu cesta está vacía.</div>
     <div class="cart-table-wrap">
     <table class="cart-table">
       <thead>
@@ -63,7 +65,7 @@
           <th>Eliminar</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="cartBody">
         <tr>
           <td>
             <div class="img-ph" style="width:100px;height:100px;min-height:unset"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
@@ -108,7 +110,7 @@
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-top:8px">
       <div>
         <div class="cart-actions">
-          <button class="btn btn-primary">Actualizar</button>
+          <button class="btn btn-primary" id="clearCartBtn">Vaciar cesta</button>
           <button class="btn btn-primary" onclick="window.location='tienda.html'">Añadir más</button>
         </div>
 
@@ -117,8 +119,8 @@
           <h3 class="coupon-title">Cupón</h3>
           <p class="coupon-subtitle">Introduce código de descuento si dispone de uno.</p>
           <div class="coupon-form">
-            <input class="coupon-input" type="text" placeholder="Introducir cupón">
-            <button class="footer-check-btn" style="background:var(--crimson)" aria-label="Aplicar">
+            <input class="coupon-input" id="couponInput" type="text" placeholder="Introducir cupón">
+            <button class="footer-check-btn" id="couponBtn" style="background:var(--crimson)" aria-label="Aplicar">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
           </div>
@@ -130,19 +132,28 @@
         <div class="order-total-header">Total del pedido</div>
         <div class="order-total-row">
           <span>Subtotal</span>
-          <span>105.00€</span>
+          <span id="cartSubtotal">105.00€</span>
         </div>
         <div class="order-total-row">
           <span>Total</span>
-          <span style="font-weight:600">105.00€</span>
+          <span id="cartTotal" style="font-weight:600">105.00€</span>
         </div>
         <div style="padding:14px 16px">
-          <button class="btn btn-primary" style="width:100%;justify-content:center">Finalizar</button>
+          <button class="btn btn-primary" id="finishBtn" style="width:100%;justify-content:center">Finalizar</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="modal-backdrop" id="successModal">
+  <div class="success-modal">
+    <button class="modal-close" id="modalCloseBtn" type="button" aria-label="Cerrar">×</button>
+    <h2>Comprado con éxito</h2>
+    <p>Gracias por confiar en Tripiana Floristas.</p>
+    <button class="btn btn-primary" id="modalOkBtn" type="button">Aceptar</button>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -222,6 +233,147 @@
       var o=n.classList.toggle('open');
       t.setAttribute('aria-expanded',o?'true':'false');
     });
+  })();
+
+  (function(){
+    var body=document.getElementById('cartBody');
+    var empty=document.getElementById('cartEmpty');
+    var subtotal=document.getElementById('cartSubtotal');
+    var total=document.getElementById('cartTotal');
+    var count=document.getElementById('cartCount');
+    var clearCartBtn=document.getElementById('clearCartBtn');
+    var finishBtn=document.getElementById('finishBtn');
+    var successModal=document.getElementById('successModal');
+    var modalCloseBtn=document.getElementById('modalCloseBtn');
+    var modalOkBtn=document.getElementById('modalOkBtn');
+    var couponInput=document.getElementById('couponInput');
+    var couponBtn=document.getElementById('couponBtn');
+
+    function getCart(){
+      return JSON.parse(localStorage.getItem('tripianaCesta') || '[]');
+    }
+
+    function saveCart(cart){
+      localStorage.setItem('tripianaCesta',JSON.stringify(cart));
+      renderCart();
+    }
+
+    function money(number){
+      return number.toFixed(2)+'€';
+    }
+
+    function updateCount(cart){
+      var items=0;
+      cart.forEach(function(item){ items=items+item.qty; });
+      if(count) count.textContent=items;
+    }
+
+    function renderCart(){
+      var cart=getCart();
+      var sum=0;
+      body.innerHTML='';
+
+      if(cart.length===0){
+        empty.style.display='block';
+        subtotal.textContent='0.00€';
+        total.textContent='0.00€';
+        updateCount(cart);
+        return;
+      }
+
+      empty.style.display='none';
+
+      cart.forEach(function(item,index){
+        var lineTotal=item.price*item.qty;
+        sum=sum+lineTotal;
+        body.innerHTML=body.innerHTML+
+          '<tr>'+
+            '<td><div class="img-ph" style="width:100px;height:100px;min-height:unset"><img class="img-contain" src="'+item.img+'" alt="'+item.name+'"></div></td>'+
+            '<td><span class="cart-product-name">'+item.name+'</span></td>'+
+            '<td><span class="cart-price">'+money(item.price)+'</span></td>'+
+            '<td>'+
+              '<div class="cart-qty">'+
+                '<button class="cart-qty-btn" data-action="less" data-index="'+index+'">−</button>'+
+                '<input class="cart-qty-input" data-index="'+index+'" type="number" value="'+item.qty+'" min="1">'+
+                '<button class="cart-qty-btn" data-action="more" data-index="'+index+'">+</button>'+
+              '</div>'+
+            '</td>'+
+            '<td><span class="cart-price">'+money(lineTotal)+'</span></td>'+
+            '<td><button class="cart-remove-btn" data-action="remove" data-index="'+index+'">×</button></td>'+
+          '</tr>';
+      });
+
+      subtotal.textContent=money(sum);
+      total.textContent=money(sum);
+      updateCount(cart);
+    }
+
+    body.addEventListener('click',function(event){
+      var button=event.target.closest('button');
+      if(!button) return;
+
+      var cart=getCart();
+      var index=parseInt(button.getAttribute('data-index'),10);
+      var action=button.getAttribute('data-action');
+
+      if(action==='less' && cart[index]){
+        cart[index].qty=Math.max(1,cart[index].qty-1);
+      }
+
+      if(action==='more' && cart[index]){
+        cart[index].qty=cart[index].qty+1;
+      }
+
+      if(action==='remove' && cart[index]){
+        cart.splice(index,1);
+      }
+
+      saveCart(cart);
+    });
+
+    body.addEventListener('change',function(event){
+      if(!event.target.classList.contains('cart-qty-input')) return;
+      var cart=getCart();
+      var index=parseInt(event.target.getAttribute('data-index'),10);
+      var qty=parseInt(event.target.value,10);
+      if(cart[index]){
+        cart[index].qty=Math.max(1,qty || 1);
+        saveCart(cart);
+      }
+    });
+
+    clearCartBtn.addEventListener('click',function(){
+      saveCart([]);
+    });
+
+    finishBtn.addEventListener('click',function(){
+      successModal.classList.add('open');
+    });
+
+    modalCloseBtn.addEventListener('click',function(){
+      successModal.classList.remove('open');
+    });
+
+    modalOkBtn.addEventListener('click',function(){
+      successModal.classList.remove('open');
+    });
+
+    successModal.addEventListener('click',function(event){
+      if(event.target===successModal){
+        successModal.classList.remove('open');
+      }
+    });
+
+    couponBtn.addEventListener('click',function(){
+      if(couponInput.value.trim()==='67'){
+        window.location.href='https://www.youtube.com/shorts/YWDltHprssU';
+      }else{
+        couponInput.value='';
+        couponInput.placeholder='Cupón no válido';
+      }
+    });
+
+    renderCart();
   })();
 </script>
 </body>
