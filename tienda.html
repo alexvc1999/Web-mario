@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tripiana Floristas — Catálogo</title>
 <link rel="stylesheet" href="styles.css">
-<style>
-  .catalog-section{padding:60px 0 80px}
-  .catalog-row{margin-bottom:52px}
-  .catalog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
-  .catalog-card{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer}
-  .catalog-card .img-ph{width:100%;aspect-ratio:1;min-height:180px;transition:opacity .2s}
-  .catalog-card:hover .img-ph{opacity:.85}
-  .catalog-card-name{font-weight:500;font-size:13px;color:var(--crimson);text-align:center}
-  .catalog-card-price{font-size:13px;color:var(--black);text-align:center}
-</style>
 </head>
 <body>
 
@@ -27,7 +17,7 @@
       <span class="logo-sub">FLORISTAS</span>
     </div>
   </a>
-  <nav class="site-nav">
+  <nav class="site-nav" id="siteNav">
     <a href="index.html">INICIO</a>
     <a href="tienda.html" class="active">TIENDA</a>
     <a href="sobre-nosotros.html">SOBRE NOSOTROS</a>
@@ -37,9 +27,12 @@
   </nav>
   <div class="header-actions">
     <a href="cesta.html" class="cart-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Cesta
     </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
   </div>
 </header>
 
@@ -58,22 +51,22 @@
     <div class="catalog-row">
       <div class="catalog-grid">
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
           <span class="catalog-card-name">Ramo Pastel</span>
           <span class="catalog-card-price">45.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/RAMO PRESERVADO.png" alt="Ramo Preservado"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/RAMO PRESERVADO.png" alt="Ramo Preservado"></div>
           <span class="catalog-card-name">Ramo Preservado</span>
           <span class="catalog-card-price">60.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/ramo girasoles.png" alt="Ramo de Girasoles"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/ramo girasoles.png" alt="Ramo de Girasoles"></div>
           <span class="catalog-card-name">Ramo de Girasoles</span>
           <span class="catalog-card-price">45.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/Ramo variado.png" alt="Ramo Variado"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/Ramo variado.png" alt="Ramo Variado"></div>
           <span class="catalog-card-name">Ramo Variado</span>
           <span class="catalog-card-price">45.00€</span>
         </div>
@@ -83,22 +76,22 @@
     <div class="catalog-row">
       <div class="catalog-grid">
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/ramo blanco.png" alt="Ramo Blanco"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/ramo blanco.png" alt="Ramo Blanco"></div>
           <span class="catalog-card-name">Ramo Blanco</span>
           <span class="catalog-card-price">55.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo Rosas"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo Rosas"></div>
           <span class="catalog-card-name">Ramo Rosas</span>
           <span class="catalog-card-price">60.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/ramo + jarrón.png" alt="Jarrón + Ramo"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/ramo + jarrón.png" alt="Jarrón + Ramo"></div>
           <span class="catalog-card-name">Jarrón + Ramo</span>
           <span class="catalog-card-price">35.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/bouquet rainbow.png" alt="Bouquet Rainbow"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/bouquet rainbow.png" alt="Bouquet Rainbow"></div>
           <span class="catalog-card-name">Bouquet Rainbow</span>
           <span class="catalog-card-price">45.00€</span>
         </div>
@@ -108,22 +101,22 @@
     <div class="catalog-row">
       <div class="catalog-grid">
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/orquídea blanca.png" alt="Orquídea Blanca"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/orquídea blanca.png" alt="Orquídea Blanca"></div>
           <span class="catalog-card-name">Orquídea Blanca</span>
           <span class="catalog-card-price">30.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/Ramo_variado.png" alt="Ramo Rosado"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/Ramo_variado.png" alt="Ramo Rosado"></div>
           <span class="catalog-card-name">Ramo Rosado</span>
           <span class="catalog-card-price">45.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/regalo + ramo.png" alt="Pack Regalo"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/regalo + ramo.png" alt="Pack Regalo"></div>
           <span class="catalog-card-name">Pack Regalo</span>
           <span class="catalog-card-price">50.00€</span>
         </div>
         <div class="catalog-card">
-          <div class="img-ph" style="width:100%;aspect-ratio:1;min-height:200px"><img class="img-contain" src="fotos web/caja floral preservada.png" alt="Caja Preservada"></div>
+          <div class="img-ph"><img class="img-contain" src="fotos web/caja floral preservada.png" alt="Caja Preservada"></div>
           <span class="catalog-card-name">Caja Preservada</span>
           <span class="catalog-card-price">50.00€</span>
         </div>
@@ -151,16 +144,16 @@
     </div>
     <div class="footer-schedule">Horario<br>Lun-Vie: 9:30 – 13:45 y 17:00 – 20:30<br>Sab: 9:30 – 13:45</div>
     <div class="footer-bouquet">
-      <div class="img-ph" style="width:200px;height:280px;background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.18);color:rgba(255,255,255,.35);font-size:11px"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo"></div>
+      <div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo"></div>
     </div>
   </div>
   <div class="footer-main">
     <div class="footer-brand">
       <div class="footer-logo">
         <img src="assets/logo-flower.svg" class="footer-logo-icon" alt="">
-        <div class="logo-text">
-          <span class="logo-name" style="color:white;font-size:14px">TRIPIANA</span>
-          <span class="logo-sub" style="color:rgba(255,255,255,.8)">FLORISTAS</span>
+        <div class="footer-logo-text logo-text">
+          <span class="logo-name">TRIPIANA</span>
+          <span class="logo-sub">FLORISTAS</span>
         </div>
       </div>
       <p class="footer-brand-desc">En Tripiana Floristas trabajamos la flor desde una mirada contemporánea, elegante y cuidadosamente refinada. Creamos experiencias visuales pensadas para quienes valoran la belleza en su forma más auténtica.</p>
@@ -202,5 +195,15 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+    if(!t||!n)return;
+    t.addEventListener('click',function(){
+      var o=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  })();
+</script>
 </body>
 </html>
