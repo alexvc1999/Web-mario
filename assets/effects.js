@@ -13,6 +13,29 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  // 1b) Separadores florales + bandas alternas entre secciones de primer nivel
+  var bodySections = Array.prototype.filter.call(
+    document.body.children,
+    function (el) { return el.tagName === 'SECTION'; }
+  );
+  var bandIndex = 0;
+  bodySections.forEach(function (sec, i) {
+    var isHero = sec.classList.contains('hero');
+    // Banda alterna (saltamos el hero, que tiene su propio fondo)
+    if (!isHero) {
+      sec.classList.add(bandIndex % 2 === 0 ? 'sec-bg-a' : 'sec-bg-b');
+      bandIndex++;
+    }
+    // Divisor: insertar antes de cada section menos la primera y menos justo después del hero
+    var prev = sec.previousElementSibling;
+    if (prev && prev.tagName === 'SECTION' && !sec.classList.contains('hero')) {
+      var divider = document.createElement('div');
+      divider.className = 'section-divider';
+      divider.innerHTML = '<span class="section-divider-mark" aria-hidden="true"></span>';
+      sec.parentNode.insertBefore(divider, sec);
+    }
+  });
+
   // 2) Auto-marcado de elementos para reveal (sin tocar el HTML)
   var autoTargets = [
     '.intro-split .intro-left',
@@ -70,6 +93,19 @@
 
     document.querySelectorAll('.fx-reveal, .fx-stagger').forEach(function (el) {
       io.observe(el);
+    });
+
+    // Activar rotación de la flor del divisor cuando entra en pantalla
+    var dividerIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          dividerIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.section-divider').forEach(function (el) {
+      dividerIo.observe(el);
     });
   } else {
     // Sin IO o usuario prefiere menos animación → mostrar todo

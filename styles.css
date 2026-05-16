@@ -720,10 +720,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .hero:not(.hero-home) .hero-content{padding-bottom:clamp(36px,6vw,72px)}
 .hero:not(.hero-home) .hero-content::after{display:none}
 
+/* ── Separación entre secciones: divisor floral + bandas alternas ── */
+.section-divider{
+  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,28px);
+  max-width:var(--maxw);margin:0 auto;
+  padding:clamp(8px,1.5vw,18px) var(--pad);
+  pointer-events:none;
+}
+.section-divider::before,.section-divider::after{
+  content:'';flex:1;height:1px;max-width:240px;
+  background:linear-gradient(90deg,transparent,rgba(138,18,75,.28),transparent);
+}
+.section-divider-mark{
+  width:34px;height:34px;flex-shrink:0;
+  background:url('assets/logo-flower.svg') center/contain no-repeat;
+  opacity:.55;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s ease;
+}
+.section-divider:hover .section-divider-mark,
+.section-divider.in-view .section-divider-mark{
+  opacity:.85;transform:rotate(180deg);
+}
+/* Variante para fondo crimson (footer cercano u oscuro) */
+.section-divider.on-dark::before,.section-divider.on-dark::after{
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+}
+.section-divider.on-dark .section-divider-mark{filter:brightness(0) invert(1);opacity:.7}
+
+/* Bandas alternas — se aplican por JS a las section directas de body (sin hero) */
+.sec-bg-a{background:var(--cream)}
+.sec-bg-b{
+  background:linear-gradient(180deg,#fbfaf5 0%,var(--white) 50%,#fbfaf5 100%);
+}
+/* Las que tienen blobs decorativos también respetan la banda */
+.sec-bg-a.section,.sec-bg-a.reco-section,.sec-bg-a.collage-section,
+.sec-bg-a.testimonial-section,.sec-bg-a.catalog-section{background:var(--cream)}
+.sec-bg-b.section,.sec-bg-b.reco-section,.sec-bg-b.collage-section,
+.sec-bg-b.testimonial-section,.sec-bg-b.catalog-section{
+  background:linear-gradient(180deg,#fbfaf5 0%,var(--white) 50%,#fbfaf5 100%);
+}
+
+/* ── Snap suave (proximity) — no es intrusivo ── */
+@media (min-width: 900px){
+  html{scroll-snap-type:y proximity;scroll-padding-top:90px}
+  body > section{scroll-snap-align:start;scroll-snap-stop:normal}
+  .hero{scroll-snap-align:none}
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
     transition-duration:.01ms!important;scroll-behavior:auto!important}
   .hero-photo{animation:none;transform:none}
   .fx-reveal,.fx-stagger > *{opacity:1!important;transform:none!important}
+  html{scroll-snap-type:none!important}
 }
