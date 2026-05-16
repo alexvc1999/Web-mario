@@ -9,15 +9,15 @@
   .services-intro{padding:clamp(40px,6vw,72px) 0 clamp(24px,4vw,40px)}
   .services-copy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,32px);margin-bottom:clamp(40px,6vw,64px)}
   .service-copy-title{font-weight:500;font-size:var(--fs-base);color:var(--crimson);margin-bottom:8px}
-  .service-copy-body{font-size:var(--fs-sm);line-height:1.6;color:var(--text-mid)}
-  .services-feature{display:grid;grid-template-columns:minmax(240px,.8fr) 1.3fr;gap:clamp(28px,4vw,64px);align-items:center;margin-bottom:clamp(48px,6vw,80px)}
+  .service-copy-body{font-size:var(--fs-base);line-height:1.6;color:var(--text-mid)}
+  .services-feature{display:grid;grid-template-columns:1fr 3fr;gap:clamp(30px,4vw,64px);align-items:start;margin-bottom:clamp(58px,7vw,92px)}
   .services-feature-title{font-weight:500;font-size:var(--fs-lg);color:var(--crimson);margin-bottom:14px}
   .services-feature-body{font-size:var(--fs-base);line-height:1.65;color:var(--text-mid);margin-bottom:22px}
-  .service-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,32px);align-items:start}
+  .service-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,4vw,72px);align-items:start}
   .service-mini-card{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
-  .service-mini-card .img-ph{width:100%;aspect-ratio:1;min-height:140px}
-  .service-mini-title{font-weight:500;font-size:var(--fs-sm);color:var(--crimson)}
-  .service-mini-meta{font-size:var(--fs-sm);color:var(--black)}
+  .service-mini-card .img-ph{width:100%;aspect-ratio:1;min-height:240px;background:transparent;padding:0}
+  .service-mini-title{font-weight:500;font-size:var(--fs-base);color:var(--crimson)}
+  .service-mini-meta{font-size:var(--fs-base);color:var(--crimson);font-weight:600}
   @media (max-width:1100px){.services-copy-grid{grid-template-columns:repeat(2,1fr)}.services-feature{grid-template-columns:1fr}}
   @media (max-width:520px){.services-copy-grid{grid-template-columns:1fr}.service-mini-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
