@@ -6,10 +6,8 @@
 <title>Tripiana Floristas — Cesta</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .cart-hero{height:400px}
-  .cart-section{padding:48px 0 80px}
-  .cart-layout{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start}
-  .cart-left{flex:1}
+  .cart-hero{min-height:clamp(280px,40vh,420px)}
+  .cart-section{padding:clamp(40px,5vw,64px) 0 clamp(56px,8vw,96px)}
 </style>
 </head>
 <body>
@@ -23,7 +21,7 @@
       <span class="logo-sub">FLORISTAS</span>
     </div>
   </a>
-  <nav class="site-nav">
+  <nav class="site-nav" id="siteNav">
     <a href="index.html">INICIO</a>
     <a href="tienda.html">TIENDA</a>
     <a href="sobre-nosotros.html">SOBRE NOSOTROS</a>
@@ -33,9 +31,12 @@
   </nav>
   <div class="header-actions">
     <a href="cesta.html" class="cart-btn" style="background:rgba(255,255,255,.15)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Cesta
     </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
   </div>
 </header>
 
@@ -50,6 +51,7 @@
 <!-- CART CONTENT -->
 <section class="cart-section">
   <div class="container">
+    <div class="cart-table-wrap">
     <table class="cart-table">
       <thead>
         <tr>
@@ -100,13 +102,14 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <!-- Actions + Total -->
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-top:8px">
       <div>
         <div class="cart-actions">
-          <button class="btn btn-primary btn-sm">Actualizar</button>
-          <button class="btn btn-primary btn-sm" onclick="window.location='tienda.html'">Añadir más</button>
+          <button class="btn btn-primary">Actualizar</button>
+          <button class="btn btn-primary" onclick="window.location='tienda.html'">Añadir más</button>
         </div>
 
         <!-- Coupon -->
@@ -160,16 +163,16 @@
     </div>
     <div class="footer-schedule">Horario<br>Lun-Vie: 9:30 – 13:45 y 17:00 – 20:30<br>Sab: 9:30 – 13:45</div>
     <div class="footer-bouquet">
-      <div class="img-ph" style="width:200px;height:280px;background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.18);color:rgba(255,255,255,.35);font-size:11px"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo"></div>
+      <div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo"></div>
     </div>
   </div>
   <div class="footer-main">
     <div class="footer-brand">
       <div class="footer-logo">
         <img src="assets/logo-flower.svg" class="footer-logo-icon" alt="">
-        <div class="logo-text">
-          <span class="logo-name" style="color:white;font-size:14px">TRIPIANA</span>
-          <span class="logo-sub" style="color:rgba(255,255,255,.8)">FLORISTAS</span>
+        <div class="footer-logo-text logo-text">
+          <span class="logo-name">TRIPIANA</span>
+          <span class="logo-sub">FLORISTAS</span>
         </div>
       </div>
       <p class="footer-brand-desc">En Tripiana Floristas trabajamos la flor desde una mirada contemporánea, elegante y cuidadosamente refinada. Creamos experiencias visuales pensadas para quienes valoran la belleza en su forma más auténtica.</p>
@@ -211,5 +214,15 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
+    if(!t||!n)return;
+    t.addEventListener('click',function(){
+      var o=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  })();
+</script>
 </body>
 </html>
