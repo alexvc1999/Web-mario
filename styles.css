@@ -815,12 +815,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 /* ── Snap suave (proximity) — no es intrusivo ── */
-@media (min-width: 900px){
-  html{scroll-snap-type:y proximity;scroll-padding-top:90px}
-  body > section{scroll-snap-align:start;scroll-snap-stop:normal}
-  .hero{scroll-snap-align:none}
-}
-
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
@@ -1208,5 +1202,91 @@ body::before{
   }
   .hero::before{
     transform:none!important;
+  }
+}
+
+/* ============================================================
+   SCROLL / OPINIONES / FONDOS DE IMAGEN — ajustes finos
+   ============================================================ */
+html{
+  scroll-snap-type:none!important;
+  scroll-padding-top:0;
+}
+body > section{
+  scroll-snap-align:none!important;
+  scroll-snap-stop:normal!important;
+}
+
+.testimonial-section{
+  overflow:visible;
+}
+.testimonial-section .container{
+  width:min(100% - clamp(28px,6vw,96px), 880px);
+  max-width:880px;
+  overflow:hidden;
+  padding:clamp(34px,5vw,62px) clamp(22px,5vw,66px);
+}
+.testimonial-carousel{
+  width:100%;
+  max-width:720px;
+  margin-inline:auto;
+}
+.testimonial-slide{
+  width:100%;
+  min-width:0;
+}
+.testimonial-quote{
+  width:100%;
+  max-width:680px;
+  margin-inline:auto;
+  font-size:clamp(16px,1vw + 12px,20px);
+  line-height:1.72;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+}
+.testimonial-section .section-title{
+  overflow-wrap:anywhere;
+}
+
+.product-card .img-ph,
+.reco-card .img-ph,
+.catalog-card .img-ph,
+.intro-prod-item .img-ph,
+.service-mini-card .img-ph,
+.product-img-ph .img-ph{
+  background:
+    radial-gradient(90% 55% at 50% 78%,rgba(138,18,75,.16),transparent 62%),
+    radial-gradient(70% 46% at 50% 34%,rgba(255,255,255,.98),rgba(255,255,255,.48) 58%,transparent 74%),
+    linear-gradient(145deg,#fffdf8 0%,#f2eadc 56%,#e7dccb 100%);
+  border-color:rgba(138,18,75,.16);
+}
+.product-card .img-ph img,
+.reco-card .img-ph img,
+.catalog-card .img-ph img,
+.intro-prod-item .img-ph img,
+.service-mini-card .img-ph img,
+.product-img-ph .img-ph img{
+  filter:drop-shadow(0 22px 18px rgba(70,36,38,.18));
+}
+.blog-card-img-ph .img-ph,
+.blog-page-card .img-ph,
+.team-card-img-ph .img-ph,
+.why-us-img-ph .img-ph,
+.collage-grid .img-ph{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.55),rgba(226,216,201,.34)),
+    repeating-linear-gradient(135deg,rgba(138,18,75,.025) 0,rgba(138,18,75,.025) 1px,transparent 1px,transparent 18px),
+    var(--paper-warm);
+}
+
+@media (max-width:720px){
+  .testimonial-section .container{
+    width:calc(100% - 28px);
+    padding:30px 18px;
+  }
+  .testimonial-quote{
+    font-size:16px;
+    line-height:1.68;
   }
 }
