@@ -1,6 +1,7 @@
-/* Efectos visuales suaves: reveal, header blur, parallax hero */
+/* Efectos visuales suaves: reveal, header blur, parallax y profundidad */
 (function () {
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js-ready');
 
   // 1) Header: clase 'scrolled' cuando bajamos
   var header = document.querySelector('.site-header');
@@ -48,8 +49,12 @@
     '.reco-header',
     '.blog-header',
     '.section-title',
+    '.services-copy-grid',
+    '.services-feature',
+    '.blog-page-grid',
     '.contact-form',
     '.cart-table-wrap',
+    '.order-total',
     '.coupon-section',
     '.policy-wrap'
   ];
@@ -71,6 +76,9 @@
     '.catalog-grid',
     '.team-grid',
     '.services-grid',
+    '.services-copy-grid',
+    '.service-mini-grid',
+    '.blog-page-grid',
     '.collage-grid',
     '.contact-info-bar'
   ];
@@ -133,6 +141,22 @@
     }, { passive: true });
   }
 
+  // 4b) Profundidad sutil del hero al mover el cursor en escritorio
+  var hero = document.querySelector('.hero');
+  if (hero && !reduced && window.matchMedia('(pointer: fine)').matches) {
+    hero.addEventListener('pointermove', function (event) {
+      var rect = hero.getBoundingClientRect();
+      var x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      var y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      hero.style.setProperty('--hero-pointer-x', (x * 14).toFixed(1) + 'px');
+      hero.style.setProperty('--hero-pointer-y', (y * 10).toFixed(1) + 'px');
+    });
+    hero.addEventListener('pointerleave', function () {
+      hero.style.setProperty('--hero-pointer-x', '0px');
+      hero.style.setProperty('--hero-pointer-y', '0px');
+    });
+  }
+
   // 5) Parallax muy ligero en elementos marcados .fx-parallax
   if (!reduced) {
     var parallaxEls = document.querySelectorAll('.fx-parallax');
@@ -155,5 +179,31 @@
       }, { passive: true });
       updateP();
     }
+  }
+
+  // 6) Tilt de producto y piezas interactivas. Sin dependencias y con fallback limpio.
+  var depthEls = document.querySelectorAll(
+    '.product-card, .reco-card, .catalog-card, .blog-card, .blog-page-card, .team-card, .intro-prod-item, .service-mini-card, .contact-info-item, .order-total'
+  );
+  depthEls.forEach(function (el) {
+    el.classList.add('fx-depth');
+  });
+
+  if (!reduced && window.matchMedia('(pointer: fine)').matches) {
+    depthEls.forEach(function (el) {
+      el.addEventListener('pointermove', function (event) {
+        var rect = el.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - 0.5;
+        var y = (event.clientY - rect.top) / rect.height - 0.5;
+        el.style.setProperty('--tilt-x', (-y * 5).toFixed(2) + 'deg');
+        el.style.setProperty('--tilt-y', (x * 5).toFixed(2) + 'deg');
+        el.style.setProperty('--shine-x', Math.round((x + 0.5) * 100) + '%');
+        el.style.setProperty('--shine-y', Math.round((y + 0.5) * 100) + '%');
+      });
+      el.addEventListener('pointerleave', function () {
+        el.style.setProperty('--tilt-x', '0deg');
+        el.style.setProperty('--tilt-y', '0deg');
+      });
+    });
   }
 })();
