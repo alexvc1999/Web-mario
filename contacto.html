@@ -46,39 +46,57 @@
 </section>
 
 <!-- CONTACT INFO + FORM -->
-<section class="section">
+<section class="section contact-page-section">
   <div class="container">
-    <!-- Info bar -->
-    <div class="contact-info-bar">
-      <div class="contact-info-item">
-        <div class="contact-icon-circle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="contact-info-text">
-          Plaza del Salvador, 3<br>03203, Elche, ALC
-        </div>
-      </div>
-      <div class="contact-info-item">
-        <div class="contact-icon-circle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        </div>
-        <div class="contact-info-text">
-          <a href="/cdn-cgi/l/email-protection#88fcfae1f8f1eee4e7ffedfac8e0e7fce5e9e1e4a6ebe7e5"><span class="__cf_email__" data-cfemail="611513081118070d0e16041321090e150c00080d4f020e0c">[email&#160;protected]</span></a>
-        </div>
-      </div>
-      <div class="contact-info-item">
-        <div class="contact-icon-circle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        <div class="contact-info-text">
-          <a href="tel:+34965459617">+34 965 459 617</a>
-        </div>
-      </div>
-    </div>
+    <div class="contact-layout">
+      <div class="contact-panel">
+        <p class="contact-eyebrow">Floristería en Elche</p>
+        <h2 class="contact-title">Cuéntanos qué necesitas y lo preparamos contigo</h2>
+        <p class="contact-lead">Encargos, bodas, eventos y entregas a domicilio.<br>Atención directa desde la floristería.</p>
 
-    <!-- Contact Form -->
-    <div class="contact-form">
-      <div class="form-row">
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <span>Visítanos</span>
+              Plaza del Salvador, 3<br>03203, Elche, ALC
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <span>Email</span>
+              <a href="/cdn-cgi/l/email-protection#88fcfae1f8f1eee4e7ffedfac8e0e7fce5e9e1e4a6ebe7e5"><span class="__cf_email__" data-cfemail="611513081118070d0e16041321090e150c00080d4f020e0c">[email&#160;protected]</span></a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <span>Teléfono</span>
+              <a href="tel:+34965459617">+34 965 459 617</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-schedule-box">
+          <span>Horario</span>
+          Lun-Vie: 9:30 - 13:45 y 17:00 - 20:30<br>
+          Sab: 9:30 - 13:45
+        </div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-heading">
+          <span>Solicitud</span>
+          <h2>Enviar mensaje</h2>
+        </div>
+        <div class="form-row">
         <div class="form-group">
           <label class="form-label">Nombre</label>
           <input type="text" class="form-input" placeholder="Introducir nombre">
@@ -96,7 +114,8 @@
         <label class="form-label">Mensaje</label>
         <textarea class="form-textarea" placeholder="Introducir comentario"></textarea>
       </div>
-      <button class="btn btn-primary">Enviar</button>
+      <button class="btn btn-primary" type="button">Enviar</button>
+      </form>
     </div>
   </div>
 </section>

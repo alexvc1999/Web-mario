@@ -52,6 +52,8 @@
     '.services-copy-grid',
     '.services-feature',
     '.blog-page-grid',
+    '.contact-layout',
+    '.contact-panel',
     '.contact-form',
     '.cart-table-wrap',
     '.order-total',
@@ -80,7 +82,8 @@
     '.service-mini-grid',
     '.blog-page-grid',
     '.collage-grid',
-    '.contact-info-bar'
+    '.contact-info-bar',
+    '.contact-info-list'
   ];
   staggerTargets.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
@@ -183,7 +186,7 @@
 
   // 6) Tilt de producto y piezas interactivas. Sin dependencias y con fallback limpio.
   var depthEls = document.querySelectorAll(
-    '.product-card, .reco-card, .catalog-card, .blog-card, .blog-page-card, .team-card, .intro-prod-item, .service-mini-card, .contact-info-item, .order-total'
+    '.product-card, .reco-card, .catalog-card, .blog-card, .blog-page-card, .team-card, .intro-prod-item, .service-mini-card, .contact-info-item, .contact-schedule-box, .order-total'
   );
   depthEls.forEach(function (el) {
     el.classList.add('fx-depth');
