@@ -125,8 +125,20 @@
     });
   }
 
-  // 4) Parallax suave de la foto del hero
+  // 4) Parallax suave de la foto/video del hero
   var heroPhoto = document.querySelector('.hero .hero-photo');
+  if (heroPhoto && heroPhoto.tagName === 'VIDEO') {
+    var markVideoFailed = function () {
+      if (!heroPhoto.videoWidth || !heroPhoto.videoHeight) {
+        heroPhoto.closest('.hero').classList.add('hero-video-failed');
+      }
+    };
+    heroPhoto.addEventListener('error', markVideoFailed);
+    heroPhoto.addEventListener('loadedmetadata', markVideoFailed);
+    heroPhoto.addEventListener('loadeddata', markVideoFailed);
+    window.setTimeout(markVideoFailed, 1800);
+  }
+
   if (heroPhoto && !reduced) {
     var ticking = false;
     var update = function () {

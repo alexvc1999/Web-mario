@@ -521,6 +521,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   isolation:isolate;
   background:radial-gradient(120% 80% at 50% 30%,rgb(58,40,40) 0%,var(--hero-dark) 60%,rgb(20,12,12) 100%);
 }
+.hero-home{
+  background:
+    linear-gradient(90deg,rgba(16,6,10,.9) 0%,rgba(16,6,10,.58) 44%,rgba(16,6,10,.35) 100%),
+    url('fotos web/coche con flores ok.jpg') center/cover no-repeat,
+    var(--hero-dark);
+}
+.hero-video-failed .hero-photo{
+  opacity:0;
+}
 .hero::before{
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
