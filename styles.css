@@ -1739,3 +1739,136 @@ body > section{
     gap:0;
   }
 }
+
+/* Collage compacto: evita columnas de imagen excesivamente altas */
+.img-ph,
+.img-ph img,
+.img-real,
+.img-contain{
+  min-width:0;
+  max-width:100%;
+}
+.img-ph{
+  width:100%;
+}
+
+.collage-split{
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  align-items:center;
+  min-width:0;
+}
+.collage-left{
+  width:min(100%,620px);
+  max-width:100%;
+  min-width:0;
+}
+.collage-right{
+  min-width:0;
+  max-width:100%;
+}
+.collage-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,clamp(150px,17vw,230px));
+  gap:12px;
+  align-items:stretch;
+  width:100%;
+  max-width:100%;
+}
+.collage-grid .img-ph:nth-child(n){
+  grid-column:auto;
+  grid-row:auto;
+  height:100%;
+  aspect-ratio:auto;
+}
+.collage-grid .img-ph:nth-child(1) img{
+  object-fit:cover;
+}
+.collage-grid .img-ph:nth-child(2) img,
+.collage-grid .img-ph:nth-child(3) img,
+.collage-grid .img-ph:nth-child(4) img{
+  object-fit:contain;
+  padding:clamp(14px,2vw,22px);
+}
+
+@media (max-width:1100px){
+  .collage-split{
+    grid-template-columns:1fr;
+  }
+  .collage-left{
+    width:min(100%,680px);
+  }
+}
+
+@media (max-width:720px){
+  .intro-products,
+  .reco-products,
+  .blog-grid-3,
+  .products-grid-3,
+  .products-grid-4,
+  .catalog-grid,
+  .team-grid,
+  .blog-grid-9,
+  .services-grid,
+  .collage-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:100%;
+    max-width:100%;
+  }
+  .intro-prod-item,
+  .reco-card,
+  .blog-card,
+  .blog-page-card,
+  .catalog-card,
+  .team-card,
+  .service-item,
+  .collage-grid .img-ph{
+    min-width:0;
+  }
+  .intro-prod-item .img-ph,
+  .reco-card .img-ph,
+  .blog-card .img-ph,
+  .blog-page-card .img-ph,
+  .catalog-card .img-ph,
+  .team-card .img-ph,
+  .service-item .img-ph{
+    min-height:0!important;
+  }
+  .collage-section{
+    overflow:hidden;
+  }
+  .collage-section .container,
+  .collage-split,
+  .collage-left,
+  .collage-right{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .collage-split{
+    display:block;
+  }
+  .collage-grid{
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-rows:repeat(2,clamp(140px,42vw,190px));
+    gap:10px;
+    margin-bottom:34px;
+  }
+  .collage-grid .img-ph:nth-child(n){
+    min-width:0;
+  }
+  .collage-right{
+    display:block;
+    padding-right:0;
+  }
+  .collage-right-title{
+    font-size:clamp(24px,6.4vw,30px);
+    line-height:1.18;
+    white-space:normal;
+  }
+  .collage-right-title,
+  .collage-right-body{
+    width:100%;
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}
