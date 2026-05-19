@@ -3,6 +3,65 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('js-ready');
 
+  // Modo claro/oscuro global. Si una pagina antigua no tiene boton, lo creamos.
+  var headerActions = document.querySelector('.header-actions');
+  var themeButton = document.getElementById('themeToggle');
+  if (!themeButton && headerActions) {
+    themeButton = document.createElement('button');
+    themeButton.className = 'theme-toggle';
+    themeButton.id = 'themeToggle';
+    themeButton.setAttribute('aria-label', 'Cambiar modo claro/oscuro');
+    themeButton.innerHTML =
+      '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>' +
+      '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    headerActions.insertBefore(themeButton, headerActions.firstChild);
+  }
+
+  function setHeroVideo(theme) {
+    var video = document.getElementById('heroVideo');
+    if (!video) return;
+    var source = video.querySelector('source');
+    if (!source) return;
+    var nextSrc = theme === 'dark' ? 'fotos web/IMG_0547.mov' : 'fotos web/IMG_0549.mov';
+    if (source.getAttribute('src') !== nextSrc) {
+      source.setAttribute('src', nextSrc);
+      source.setAttribute('type', 'video/quicktime');
+      video.load();
+      var playPromise = video.play();
+      if (playPromise && playPromise.catch) playPromise.catch(function () {});
+    }
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('tripiana-theme', theme);
+    setHeroVideo(theme);
+  }
+
+  var savedTheme = localStorage.getItem('tripiana-theme') || 'light';
+  applyTheme(savedTheme);
+  if (themeButton) {
+    themeButton.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // Coloca el horario del footer junto a la marca, como en las paginas nuevas.
+  document.querySelectorAll('.footer-schedule').forEach(function (schedule) {
+    var footer = schedule.closest('.site-footer');
+    var brand = footer && footer.querySelector('.footer-brand');
+    var desc = brand && brand.querySelector('.footer-brand-desc');
+    if (!brand || brand.querySelector('.footer-schedule-inline')) return;
+    var text = schedule.innerHTML.replace(/^Horario\s*<br\s*\/?>/i, '');
+    var moved = document.createElement('div');
+    moved.className = 'footer-schedule-inline';
+    moved.innerHTML = '<strong>Horario</strong>' + text;
+    if (desc) desc.insertAdjacentElement('afterend', moved);
+    else brand.appendChild(moved);
+    schedule.remove();
+  });
+
   // 1) Header: clase 'scrolled' cuando bajamos
   var header = document.querySelector('.site-header');
   if (header) {
@@ -14,7 +73,7 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // 1b) Separadores florales + bandas alternas entre secciones de primer nivel
+  // 1b) Bandas alternas entre secciones de primer nivel
   var bodySections = Array.prototype.filter.call(
     document.body.children,
     function (el) { return el.tagName === 'SECTION'; }
@@ -26,14 +85,6 @@
     if (!isHero) {
       sec.classList.add(bandIndex % 2 === 0 ? 'sec-bg-a' : 'sec-bg-b');
       bandIndex++;
-    }
-    // Divisor: insertar antes de cada section menos la primera y menos justo después del hero
-    var prev = sec.previousElementSibling;
-    if (prev && prev.tagName === 'SECTION' && !sec.classList.contains('hero')) {
-      var divider = document.createElement('div');
-      divider.className = 'section-divider';
-      divider.innerHTML = '<span class="section-divider-mark" aria-hidden="true"></span>';
-      sec.parentNode.insertBefore(divider, sec);
     }
   });
 
@@ -106,18 +157,6 @@
       io.observe(el);
     });
 
-    // Activar rotación de la flor del divisor cuando entra en pantalla
-    var dividerIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          dividerIo.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    document.querySelectorAll('.section-divider').forEach(function (el) {
-      dividerIo.observe(el);
-    });
   } else {
     // Sin IO o usuario prefiere menos animación → mostrar todo
     document.querySelectorAll('.fx-reveal, .fx-stagger').forEach(function (el) {

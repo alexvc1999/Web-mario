@@ -1,355 +1,663 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tripiana Floristas — Inicio</title>
-<link rel="stylesheet" href="styles.css">
-<script src="assets/effects.js" defer></script>
-</head>
-<body>
-
-<!-- HEADER -->
-<header class="site-header hdr-crimson">
-  <a href="index.html" class="logo">
-    <img src="assets/logo-flower.svg" class="logo-icon" alt="">
-    <div class="logo-text">
-      <span class="logo-name">TRIPIANA</span>
-      <span class="logo-sub">FLORISTAS</span>
-    </div>
-  </a>
-  <nav class="site-nav" id="siteNav">
-    <a href="index.html" class="active">INICIO</a>
-    <a href="tienda.html">TIENDA</a>
-    <a href="sobre-nosotros.html">SOBRE NOSOTROS</a>
-    <a href="blog.html">BLOG</a>
-    <a href="servicios.html">SERVICIOS</a>
-    <a href="contacto.html">CONTÁCTANOS</a>
-  </nav>
-  <div class="header-actions">
-    <a href="cesta.html" class="cart-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Cesta
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-    </button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero hero-home">
-  <video class="hero-photo" autoplay muted loop playsinline preload="auto">
-    <source src="videos/C0321.MP4" type="video/mp4">
-  </video>
-  <div class="hero-content">
-    <h1 class="hero-title">Naturaleza en<br>versión exacta</h1>
-    <p class="hero-body">La temporada de bodas ya está aquí. Diseños creados a medida para dar forma a tu gran día. Reserva ya tu fecha ahora y obtén un 15% de descuento.</p>
-    <div class="hero-actions">
-      <a href="contacto.html" class="btn btn-outline-white">Reservar</a>
-      <a href="tienda.html" class="btn btn-outline-white">Ver Catálogo</a>
-    </div>
-  </div>
-</section>
-
-<!-- SELECCIÓN — texto a la izquierda, productos a la derecha -->
-<section class="section" style="padding-bottom:0">
-  <div class="container">
-    <div class="intro-split">
-      <div class="intro-left">
-        <h2 class="intro-heading">Una selección pensada para impresionar</h2>
-        <p class="intro-body">Composiciones preparadas al detalle para quienes buscan regalar, decorar o sorprender con una apuesta segura y sofisticada.</p>
-        <a href="tienda.html" class="btn btn-primary">Explorar</a>
-      </div>
-      <div class="intro-products">
-        <div class="intro-prod-item">
-          <div class="img-ph"><img class="img-contain" src="fotos web/RAMO PRESERVADO.png" alt="Ramo Preservado"></div>
-          <span class="product-name">Ramo Preservado</span>
-          <span class="product-price">60.00€</span>
-        </div>
-        <div class="intro-prod-item">
-          <div class="img-ph"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
-          <span class="product-name">Ramo Pastel</span>
-          <span class="product-price">45.00€</span>
-        </div>
-        <div class="intro-prod-item">
-          <div class="img-ph"><img class="img-contain" src="fotos web/Ramo variado.png" alt="Ramo Variado"></div>
-          <span class="product-name">Ramo Variado</span>
-          <span class="product-price">45.00€</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ¿POR QUÉ ELEGIRNOS? — features 2x2 a la izquierda, imagen vertical a la derecha -->
-<section class="section">
-  <div class="container">
-    <div class="why-us-grid">
-      <div>
-        <h2 class="why-us-head">¿Por qué elegirnos?</h2>
-        <p class="why-us-body">En Tripiana Floristas trabajamos la flor desde una mirada contemporánea, elegante y cuidadosamente refinada. Creamos experiencias visuales pensadas para quienes valoran la belleza en su forma más auténtica.</p>
-        <div class="features-grid">
-          <div>
-            <p class="feature-title">Envíos a domicilio</p>
-            <p class="feature-body">Entregamos tus flores en casa con rapidez, cuidado y una presentación impecable.</p>
-          </div>
-          <div>
-            <p class="feature-title">Buen asesoramiento</p>
-            <p class="feature-body">Cada cliente y cada ocasión son únicos. Ofrecemos un trato individual para crear propuestas florales con identidad propia.</p>
-          </div>
-          <div>
-            <p class="feature-title">Ubicación perfecta</p>
-            <p class="feature-body">Ubicados en el centro de la ciudad, ofrecemos un espacio donde el diseño floral y la elegancia están cerca de ti.</p>
-          </div>
-          <div>
-            <p class="feature-title">Activos en redes</p>
-            <p class="feature-body">Compartimos nuestras creaciones, novedades y proyectos para que puedas descubrir constantemente todo sobre las flores.</p>
-          </div>
-        </div>
-      </div>
-      <div class="why-us-img-ph fx-reveal fx-right">
-        <div class="img-ph"><img class="img-real" src="fotos web/FLORISTERIA_JERO.jpg" alt="Floristería"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COLLAGE + DONDE LA FLOR -->
-<section class="collage-section">
-  <div class="container">
-    <div class="collage-split">
-      <div class="collage-left">
-        <div class="collage-grid">
-          <div class="img-ph"><img class="img-real" src="fotos web/FLORISTERIA_JERO.jpg" alt="Floristería"></div>
-          <div class="img-ph"><img class="img-contain" src="fotos web/ramo + jarrón.png" alt="Ramo con jarrón"></div>
-          <div class="img-ph"><img class="img-contain" src="fotos web/regalo + ramo.png" alt="Regalo con ramo"></div>
-          <div class="img-ph"><img class="img-contain" src="fotos web/caja floral preservada.png" alt="Caja floral preservada"></div>
-        </div>
-      </div>
-      <div class="collage-right">
-        <h2 class="collage-right-title">Donde la flor se convierte en detalle</h2>
-        <p class="collage-right-body">Podríamos hablar de trayectoria, de técnica y de flores seleccionadas con precisión. De composiciones estudiadas al detalle y de un trabajo impecable en cada creación.<br><br>Pero preferimos hablar de lo que realmente importa. De la emoción que despierta un ramo bien hecho. De la elegancia de una boda que se siente equilibrada en cada rincón. Y de la tranquilidad de saber que todo está cuidado, sin tener que preocuparte por nada.<br><br>Nuestra historia nace de esa forma de entender las flores: como un lenguaje silencioso que transmite distinción, sensibilidad y presencia.</p>
-        <a href="sobre-nosotros.html" class="btn btn-outline-crimson">Conócenos</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RECOMENDACIONES PARA TI -->
-<section class="reco-section">
-  <div class="container">
-    <div class="reco-header">
-      <h2 class="reco-title">Recomendaciones para ti</h2>
-    </div>
-    <div class="reco-products">
-      <div class="reco-card">
-        <div class="img-ph"><img class="img-contain" src="fotos web/RAMO PRESERVADO.png" alt="Ramo Preservado"></div>
-        <span class="reco-card-name">Ramo Preservado</span>
-        <p class="reco-card-sub">Composición preservada en tonos cálidos, ideal para regalar o decorar cualquier estancia.</p>
-        <a href="tienda.html" class="reco-card-link">Ver más</a>
-      </div>
-      <div class="reco-card">
-        <div class="img-ph"><img class="img-contain" src="fotos web/ramo pastel.png" alt="Ramo Pastel"></div>
-        <span class="reco-card-name">Ramo Pastel</span>
-        <p class="reco-card-sub">Suaves tonos pastel para un detalle elegante y delicado que sorprende en cualquier ocasión.</p>
-        <a href="tienda.html" class="reco-card-link">Ver más</a>
-      </div>
-      <div class="reco-card">
-        <div class="img-ph"><img class="img-contain" src="fotos web/Ramo variado.png" alt="Ramo Variado"></div>
-        <span class="reco-card-name">Ramo Variado</span>
-        <p class="reco-card-sub">Mezcla cuidada de flores de temporada con una composición vibrante y natural.</p>
-        <a href="tienda.html" class="reco-card-link">Ver más</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonial-section">
-  <div class="container">
-    <h2 class="section-title section-title-black">Opiniones</h2>
-    <div class="testimonial-carousel">
-      <div class="testimonial-slide active">
-        <p class="testimonial-quote">"Elegí a Tripiana para el día de mi boda y la experiencia fue todo un acierto. Cuidaron cada detalle floral, desde el ramo de novia hasta la decoración del altar, transmitiendo sensibilidad y elegancia en cada rincón. Sin duda, repetiré para futuras ocasiones."</p>
-        <div class="testimonial-avatar">
-          <div class="img-ph" style="border-radius:50%"><img class="img-real" src="fotos web/foto_jero.png" alt=""></div>
-        </div>
-        <p class="testimonial-name">Cristina</p>
-      </div>
-      <div class="testimonial-slide">
-        <p class="testimonial-quote">"El ramo llegó precioso, con una combinación de colores muy cuidada y una presentación impecable. Se notaba el cariño en cada detalle."</p>
-        <div class="testimonial-avatar">
-          <div class="img-ph" style="border-radius:50%"><img class="img-real" src="fotos web/FLORISTERIA_JERO.jpg" alt=""></div>
-        </div>
-        <p class="testimonial-name">María</p>
-      </div>
-      <div class="testimonial-slide">
-        <p class="testimonial-quote">"Nos asesoraron con muchísima paciencia y acertaron de lleno con el estilo. Todo quedó elegante, natural y muy especial."</p>
-        <div class="testimonial-avatar">
-          <div class="img-ph" style="border-radius:50%"><img class="img-real" src="fotos web/coche con flores ok.jpg" alt=""></div>
-        </div>
-        <p class="testimonial-name">Laura</p>
-      </div>
-    </div>
-    <div class="testimonial-dots">
-      <button class="dot active" type="button" aria-label="Testimonio 1"></button>
-      <button class="dot" type="button" aria-label="Testimonio 2"></button>
-      <button class="dot" type="button" aria-label="Testimonio 3"></button>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG RECIENTE -->
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="blog-header">
-      <h2 class="blog-header-title">Blog Reciente</h2>
-      <a href="blog.html" class="blog-viewall">Ver Todos Los Posts</a>
-    </div>
-    <div class="blog-grid-3">
-      <div class="blog-card">
-        <div class="blog-card-img-ph"><div class="img-ph"><img class="img-real" src="fotos web/FLORISTERIA_JERO.jpg" alt="Foto blog"></div></div>
-        <p class="blog-card-title">Cómo elegir flores para una boda elegante</p>
-        <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
-      </div>
-      <div class="blog-card">
-        <div class="blog-card-img-ph"><div class="img-ph"><img class="img-real" src="fotos web/coche con flores ok.jpg" alt="Foto blog"></div></div>
-        <p class="blog-card-title">Ramos de temporada que siempre funcionan</p>
-        <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
-      </div>
-      <div class="blog-card">
-        <div class="blog-card-img-ph"><div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Foto blog"></div></div>
-        <p class="blog-card-title">Ideas para conservar flores preservadas</p>
-        <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-texture"></div>
-  <!-- Newsletter -->
-  <div class="footer-nl">
-    <div class="footer-nl-left">
-      <p class="footer-nl-label">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        Suscríbete a nuestra Newsletter
-      </p>
-      <div class="footer-nl-form">
-        <input class="footer-input" type="text" placeholder="Introducir nombre">
-        <input class="footer-input" type="email" placeholder="Introducir email">
-        <button class="footer-check-btn" aria-label="Enviar">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="footer-schedule">
-      Horario<br>
-      Lun-Vie: 9:30 – 13:45 y 17:00 – 20:30<br>
-      Sab: 9:30 – 13:45
-    </div>
-    <div class="footer-bouquet">
-      <div class="img-ph"><img class="img-contain" src="fotos web/flor publi.png" alt="Ramo"></div>
-    </div>
-  </div>
-  <!-- Main -->
-  <div class="footer-main">
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <img src="assets/logo-flower.svg" class="footer-logo-icon" alt="">
-        <div class="footer-logo-text logo-text">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tripiana Floristas — Inicio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="assets/effects.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header hdr-crimson">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
           <span class="logo-name">TRIPIANA</span>
           <span class="logo-sub">FLORISTAS</span>
         </div>
-      </div>
-      <p class="footer-brand-desc">En Tripiana Floristas trabajamos la flor desde una mirada contemporánea, elegante y cuidadosamente refinada. Creamos experiencias visuales pensadas para quienes valoran la belleza en su forma más auténtica.</p>
-      <div class="footer-social">
-        <button class="footer-social-btn" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html" class="active">INICIO</a>
+        <a href="tienda.html">TIENDA</a>
+        <a href="sobre-nosotros.html">SOBRE NOSOTROS</a>
+        <a href="servicios.html">SERVICIOS</a>
+        <a href="contacto.html">CONTÁCTANOS</a>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Cambiar modo claro/oscuro"
+        >
+          <svg
+            class="icon-moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
         </button>
-        <button class="footer-social-btn" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        <a href="cesta.html" class="cart-btn">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          Cesta
+        </a>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="3" y1="7" x2="21" y2="7" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="17" x2="21" y2="17" />
+          </svg>
         </button>
-        <button class="footer-social-btn" aria-label="WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.469 2 2 6.47 2 11.99c0 2.108.62 4.072 1.693 5.717L2 22l4.418-1.666C8.006 21.375 9.96 22 11.99 22 17.51 22 22 17.53 22 12.01 22 6.47 17.51 2 11.99 2z"/></svg>
-        </button>
       </div>
-    </div>
-    <div class="footer-links-grid">
-      <div class="footer-link-col">
-        <a href="sobre-nosotros.html">Sobre Nosotros</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="blog.html">Blog</a>
-        <a href="contacto.html">Contáctanos</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero hero-home">
+      <video
+        class="hero-photo hero-video-light"
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="fotos web/coche con flores ok.jpg"
+      >
+        <source src="fotos web/IMG_0549.mov" type="video/quicktime" />
+      </video>
+      <div class="hero-content">
+        <h1 class="hero-title">Naturaleza en<br />versión exacta</h1>
+        <p class="hero-body">
+          La temporada de <em>bodas</em> ya está aquí. Diseños creados a medida
+          para dar forma a tu gran día.
+          <br />
+          Reserva ya tu fecha y obtén un <em>15% de descuento</em>.
+        </p>
+        <div class="hero-actions">
+          <a href="contacto.html" class="btn btn-cream">Reservar</a>
+          <a href="tienda.html" class="btn btn-cream-outline">Ver Catálogo</a>
+        </div>
       </div>
-      <div class="footer-link-col">
-        <a href="#">Soporte</a>
-        <a href="#">Conocimientos</a>
-        <a href="#">Chat Online</a>
+    </section>
+
+    <!-- SELECCIÓN — texto a la izquierda, productos a la derecha -->
+    <section class="section" style="padding-bottom: 0">
+      <div class="container">
+        <div class="intro-split">
+          <div class="intro-left">
+            <h2 class="intro-heading">
+              Una selección pensada para impresionar
+            </h2>
+            <p class="intro-body">
+              Composiciones preparadas al detalle para quienes buscan regalar,
+              decorar o sorprender con una apuesta segura y sofisticada.
+            </p>
+            <a href="tienda.html" class="btn btn-primary">Explorar</a>
+          </div>
+          <div class="intro-products">
+            <div class="intro-prod-item">
+              <div class="img-ph">
+                <img
+                  class="img-contain"
+                  src="fotos web/fotos web-05.png"
+                  alt="Ramo Preservado"
+                />
+              </div>
+              <span class="product-name">Ramo Preservado</span>
+              <span class="product-price">60.00€</span>
+            </div>
+            <div class="intro-prod-item">
+              <div class="img-ph">
+                <img
+                  class="img-contain"
+                  src="fotos web/fotos web-13.png"
+                  alt="Ramo Pastel"
+                />
+              </div>
+              <span class="product-name">Ramo Pastel</span>
+              <span class="product-price">45.00€</span>
+            </div>
+            <div class="intro-prod-item">
+              <div class="img-ph">
+                <img
+                  class="img-contain"
+                  src="fotos web/fotos web-12.png"
+                  alt="Ramo Variado"
+                />
+              </div>
+              <span class="product-name">Ramo Variado</span>
+              <span class="product-price">45.00€</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-link-col">
-        <a href="#">Trabajos</a>
-        <a href="sobre-nosotros.html">Nuestro Equipo</a>
-        <a href="#">Dirección</a>
-        <a href="politica.html">Política de Privacidad</a>
+    </section>
+
+    <!-- ¿POR QUÉ ELEGIRNOS? -->
+    <section class="section">
+      <div class="container">
+        <div class="why-us-grid">
+          <div>
+            <h2 class="why-us-head">¿Por qué elegirnos?</h2>
+            <p class="why-us-body">
+              En Tripiana Floristas trabajamos la flor desde una mirada
+              contemporánea, elegante y cuidadosamente refinada. Creamos
+              experiencias visuales pensadas para quienes valoran la belleza en
+              su forma más auténtica.
+            </p>
+            <div class="features-grid">
+              <div>
+                <p class="feature-title">Envíos a domicilio</p>
+                <p class="feature-body">
+                  Entregamos tus flores en casa con rapidez, cuidado y una
+                  presentación impecable.
+                </p>
+              </div>
+              <div>
+                <p class="feature-title">Buen asesoramiento</p>
+                <p class="feature-body">
+                  Cada cliente y cada ocasión son únicos. Ofrecemos un trato
+                  individual para crear propuestas florales con identidad
+                  propia.
+                </p>
+              </div>
+              <div>
+                <p class="feature-title">Ubicación perfecta</p>
+                <p class="feature-body">
+                  Ubicados en el centro de la ciudad, ofrecemos un espacio donde
+                  el diseño floral y la elegancia están cerca de ti.
+                </p>
+              </div>
+              <div>
+                <p class="feature-title">Activos en redes</p>
+                <p class="feature-body">
+                  Compartimos nuestras creaciones, novedades y proyectos para
+                  que puedas descubrir constantemente todo sobre las flores.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="why-us-img-ph fx-reveal fx-right">
+            <div class="img-ph">
+              <img
+                class="img-real"
+                src="fotos web/Tarro_Planta.jpg"
+                alt="Floristería"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <span>Copyright©2026</span>
-      <span>Derechos reservados — Diseñado por Mario Tripiana</span>
-    </div>
-    <div class="footer-bottom-right">
-      <a href="#">Términos y Condiciones</a>
-      <a href="politica.html">Política de Privacidad</a>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<script>
-  (function(){
-    var t=document.getElementById('navToggle'),n=document.getElementById('siteNav');
-    if(!t||!n)return;
-    t.addEventListener('click',function(){
-      var o=n.classList.toggle('open');
-      t.setAttribute('aria-expanded',o?'true':'false');
-    });
-  })();
+    <!-- COLLAGE + DONDE LA FLOR SE CONVIERTE EN DETALLE -->
+    <section class="collage-section">
+      <div class="container">
+        <div class="collage-split">
+          <div class="collage-left">
+            <div class="collage-grid">
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Planta_Grande.jpg"
+                  alt="Floristería"
+                />
+              </div>
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Paniculata_Rainbow.jpg"
+                  alt="Paniculata Rainbow"
+                />
+              </div>
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Orquídea_2.jpg"
+                  alt="Orquídea"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="collage-right">
+            <h2 class="collage-right-title">
+              Donde la flor se convierte en detalle
+            </h2>
+            <p class="collage-right-body">
+              Podríamos hablar de trayectoria, de técnica y de flores
+              seleccionadas con precisión. De composiciones estudiadas al
+              detalle y de un trabajo impecable en cada creación.<br /><br />
+              Pero preferimos hablar de lo que realmente importa. De la emoción
+              que despierta un ramo bien hecho. De la elegancia de una boda que
+              se siente equilibrada en cada rincón. Y de la tranquilidad de
+              saber que todo está cuidado, sin tener que preocuparte por
+              nada.<br /><br />
+              Nuestra historia nace de esa forma de entender las flores: como un
+              lenguaje silencioso que transmite distinción, sensibilidad y
+              presencia.
+            </p>
+            <a href="sobre-nosotros.html" class="btn btn-primary">Conócenos</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  (function(){
-    var sections=document.querySelectorAll('.testimonial-section');
-    sections.forEach(function(section){
-      var slides=section.querySelectorAll('.testimonial-slide');
-      var dots=section.querySelectorAll('.testimonial-dots .dot');
-      var current=0;
+    <!-- RECOMENDACIONES PARA TI -->
+    <section class="reco-section">
+      <div class="container">
+        <div class="reco-header">
+          <h2 class="reco-title">Recomendaciones para ti</h2>
+        </div>
+        <div class="reco-products">
+          <div class="reco-card">
+            <div class="img-ph">
+              <img
+                class="img-contain"
+                src="fotos web/fotos web-05.png"
+                alt="Ramo Preservado"
+              />
+            </div>
+            <span class="reco-card-name">Ramo Preservado</span>
+            <p class="reco-card-sub">
+              Composición preservada en tonos cálidos, ideal para regalar o
+              decorar cualquier estancia.
+            </p>
+            <a href="tienda.html" class="reco-card-link">Ver más</a>
+          </div>
+          <div class="reco-card">
+            <div class="img-ph">
+              <img
+                class="img-contain"
+                src="fotos web/fotos web-13.png"
+                alt="Ramo Pastel"
+              />
+            </div>
+            <span class="reco-card-name">Ramo Pastel</span>
+            <p class="reco-card-sub">
+              Suaves tonos pastel para un detalle elegante y delicado que
+              sorprende en cualquier ocasión.
+            </p>
+            <a href="tienda.html" class="reco-card-link">Ver más</a>
+          </div>
+          <div class="reco-card">
+            <div class="img-ph">
+              <img
+                class="img-contain"
+                src="fotos web/fotos web-12.png"
+                alt="Ramo Variado"
+              />
+            </div>
+            <span class="reco-card-name">Ramo Variado</span>
+            <p class="reco-card-sub">
+              Mezcla cuidada de flores de temporada con una composición vibrante
+              y natural.
+            </p>
+            <a href="tienda.html" class="reco-card-link">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      if(slides.length<2)return;
+    <!-- TESTIMONIALS -->
+    <section class="testimonial-section">
+      <div class="container">
+        <h2 class="section-title section-title-black">Opiniones</h2>
+        <div class="testimonial-carousel">
+          <div class="testimonial-slide active">
+            <p class="testimonial-quote">
+              "Elegí a Tripiana para el día de mi boda y la experiencia fue todo
+              un acierto. Cuidaron cada detalle floral, desde el ramo de novia
+              hasta la decoración del altar, transmitiendo sensibilidad y
+              elegancia en cada rincón. Sin duda, repetiré para futuras
+              ocasiones."
+            </p>
+            <div class="testimonial-avatar">
+              <div class="img-ph" style="border-radius: 50%">
+                <img class="img-real" src="fotos web/foto_jero.png" alt="" />
+              </div>
+            </div>
+            <p class="testimonial-name">Cristina</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">
+              "El ramo llegó precioso, con una combinación de colores muy
+              cuidada y una presentación impecable. Se notaba el cariño en cada
+              detalle."
+            </p>
+            <div class="testimonial-avatar">
+              <div class="img-ph" style="border-radius: 50%">
+                <img
+                  class="img-real"
+                  src="fotos web/FLORISTERIA_JERO.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <p class="testimonial-name">María</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">
+              "Nos asesoraron con muchísima paciencia y acertaron de lleno con
+              el estilo. Todo quedó elegante, natural y muy especial."
+            </p>
+            <div class="testimonial-avatar">
+              <div class="img-ph" style="border-radius: 50%">
+                <img
+                  class="img-real"
+                  src="fotos web/coche con flores ok.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <p class="testimonial-name">Laura</p>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <button
+            class="dot active"
+            type="button"
+            aria-label="Testimonio 1"
+          ></button>
+          <button class="dot" type="button" aria-label="Testimonio 2"></button>
+          <button class="dot" type="button" aria-label="Testimonio 3"></button>
+        </div>
+      </div>
+    </section>
 
-      function showSlide(index){
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current=index;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-      }
+    <!-- BLOG RECIENTE (accesible desde inicio) -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <div class="blog-header">
+          <h2 class="blog-header-title">Blog Reciente</h2>
+          <a href="blog.html" class="blog-viewall">Ver Todos Los Posts</a>
+        </div>
+        <div class="blog-grid-3">
+          <div class="blog-card">
+            <div class="blog-card-img-ph">
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Bonsái_mini.jpg"
+                  alt="Foto blog"
+                />
+              </div>
+            </div>
+            <p class="blog-card-title">
+              Cómo elegir flores para una boda elegante
+            </p>
+            <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img-ph">
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Centro_Blanco.jpg"
+                  alt="Foto blog"
+                />
+              </div>
+            </div>
+            <p class="blog-card-title">
+              Ramos de temporada que siempre funcionan
+            </p>
+            <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img-ph">
+              <div class="img-ph">
+                <img
+                  class="img-real"
+                  src="fotos web/Jero_Planta.jpg"
+                  alt="Foto blog"
+                />
+              </div>
+            </div>
+            <p class="blog-card-title">
+              Ideas para conservar flores preservadas
+            </p>
+            <p class="blog-card-meta">Por Tripiana Floristas · 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      dots.forEach(function(dot,index){
-        dot.addEventListener('click',function(){
-          showSlide(index);
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <!-- Newsletter -->
+      <div class="footer-nl">
+        <div class="footer-nl-left">
+          <p class="footer-nl-label">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M2 7l10 7 10-7" />
+            </svg>
+            Suscríbete a nuestra Newsletter
+          </p>
+          <div class="footer-nl-form">
+            <input
+              class="footer-input"
+              type="text"
+              placeholder="Introducir nombre"
+            />
+            <input
+              class="footer-input"
+              type="email"
+              placeholder="Introducir email"
+            />
+            <button class="footer-check-btn" aria-label="Enviar">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="footer-bouquet">
+          <div class="img-ph">
+            <img
+              class="img-contain"
+              src="fotos web/fotos web-11.png"
+              alt="Ramo"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Main -->
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/logo-flower.svg" class="footer-logo-icon" alt="" />
+            <div class="footer-logo-text logo-text">
+              <span class="logo-name">TRIPIANA</span>
+              <span class="logo-sub">FLORISTAS</span>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            En Tripiana Floristas trabajamos la flor desde una mirada
+            contemporánea, elegante y cuidadosamente refinada. Creamos
+            experiencias visuales pensadas para quienes valoran la belleza en su
+            forma más auténtica.
+          </p>
+          <div class="footer-schedule-inline">
+            <strong>Horario</strong>
+            Lun–Vie: 9:30 – 13:45 y 17:00 – 20:30<br />
+            Sáb: 9:30 – 13:45
+          </div>
+          <div class="footer-social">
+            <button class="footer-social-btn" aria-label="Facebook">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                />
+              </svg>
+            </button>
+            <button class="footer-social-btn" aria-label="Instagram">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </button>
+            <button class="footer-social-btn" aria-label="WhatsApp">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                />
+                <path
+                  d="M11.99 2C6.469 2 2 6.47 2 11.99c0 2.108.62 4.072 1.693 5.717L2 22l4.418-1.666C8.006 21.375 9.96 22 11.99 22 17.51 22 22 17.53 22 12.01 22 6.47 17.51 2 11.99 2z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-link-col">
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contáctanos</a>
+          </div>
+          <div class="footer-link-col">
+            <a href="#">Soporte</a>
+            <a href="#">Conocimientos</a>
+            <a href="#">Chat Online</a>
+          </div>
+          <div class="footer-link-col">
+            <a href="#">Trabajos</a>
+            <a href="sobre-nosotros.html">Nuestro Equipo</a>
+            <a href="#">Dirección</a>
+            <a href="politica.html">Política de Privacidad</a>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <span>Copyright©2026</span>
+          <span>Derechos reservados — Diseñado por Mario Tripiana</span>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="#">Términos y Condiciones</a>
+          <a href="politica.html">Política de Privacidad</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile nav
+      (function () {
+        var t = document.getElementById("navToggle"),
+          n = document.getElementById("siteNav");
+        if (!t || !n) return;
+        t.addEventListener("click", function () {
+          var o = n.classList.toggle("open");
+          t.setAttribute("aria-expanded", o ? "true" : "false");
         });
-      });
+      })();
 
-      setInterval(function(){
-        var next=current+1;
-        if(next>=slides.length)next=0;
-        showSlide(next);
-      },4000);
-    });
-  })();
-</script>
-</body>
+      // Testimonial carousel
+      (function () {
+        var sections = document.querySelectorAll(".testimonial-section");
+        sections.forEach(function (section) {
+          var slides = section.querySelectorAll(".testimonial-slide");
+          var dots = section.querySelectorAll(".testimonial-dots .dot");
+          var current = 0;
+          if (slides.length < 2) return;
+          function showSlide(index) {
+            slides[current].classList.remove("active");
+            dots[current].classList.remove("active");
+            current = index;
+            slides[current].classList.add("active");
+            dots[current].classList.add("active");
+          }
+          dots.forEach(function (dot, index) {
+            dot.addEventListener("click", function () {
+              showSlide(index);
+            });
+          });
+          setInterval(function () {
+            var next = current + 1;
+            if (next >= slides.length) next = 0;
+            showSlide(next);
+          }, 4000);
+        });
+      })();
+    </script>
+  </body>
 </html>
