@@ -4138,21 +4138,13 @@ body > section {
 /* Footer con fondo cemento en todas las páginas */
 .site-footer {
   background:
-    linear-gradient(90deg, rgba(65, 18, 38, 0.88), rgba(65, 18, 38, 0.72)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
+    linear-gradient(90deg, rgba(18, 4, 10, 0.22), rgba(18, 4, 10, 0.12)),
+    url("fotos web/fondo-cemento-footer.jpg") center/cover no-repeat !important;
   color: var(--white);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.42);
 }
 .footer-texture {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.16)),
-    repeating-linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.045) 0,
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px,
-      transparent 18px
-    ) !important;
-  mix-blend-mode: normal;
+  display: none !important;
 }
 .site-footer::before {
   display: none !important;
@@ -4591,21 +4583,13 @@ body > section {
 
 [data-theme="dark"] .site-footer {
   background:
-    linear-gradient(90deg, rgba(36, 0, 0, 0.94), rgba(17, 20, 25, 0.86)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
+    linear-gradient(90deg, rgba(10, 0, 0, 0.28), rgba(10, 0, 0, 0.16)),
+    url("fotos web/fondo-cemento-footer.jpg") center/cover no-repeat !important;
   color: #f3f0e7;
 }
 
 [data-theme="dark"] .footer-texture {
-  background:
-    linear-gradient(180deg, rgba(232, 208, 219, 0.09), rgba(0, 0, 0, 0.34)),
-    repeating-linear-gradient(
-      115deg,
-      rgba(243, 240, 231, 0.045) 0,
-      rgba(243, 240, 231, 0.045) 1px,
-      transparent 1px,
-      transparent 18px
-    ) !important;
+  display: none !important;
 }
 
 @media (max-width: 720px) {

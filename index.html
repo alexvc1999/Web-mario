@@ -100,10 +100,14 @@
         muted
         loop
         playsinline
-        preload="auto"
+        preload="none"
         poster="fotos web/coche con flores ok.jpg"
       >
-        <source src="fotos web/IMG_0549.mov" type="video/quicktime" />
+        <source
+          data-src-light="fotos web/IMG_0549.mov"
+          data-src-dark="fotos web/IMG_0547.mov"
+          type="video/quicktime"
+        />
       </video>
       <div class="hero-content">
         <h1 class="hero-title">Naturaleza en<br />versión exacta</h1>
@@ -509,8 +513,10 @@
           <div class="img-ph">
             <img
               class="img-contain"
-              src="fotos web/fotos web-11.png"
+              src="fotos web/fotos-web-11-footer.png"
               alt="Ramo"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

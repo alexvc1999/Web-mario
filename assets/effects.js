@@ -20,9 +20,13 @@
   function setHeroVideo(theme) {
     var video = document.getElementById('heroVideo');
     if (!video) return;
+    if (video.getAttribute('data-video-ready') !== 'true') return;
     var source = video.querySelector('source');
     if (!source) return;
-    var nextSrc = theme === 'dark' ? 'fotos web/IMG_0547.mov' : 'fotos web/IMG_0549.mov';
+    var nextSrc = theme === 'dark'
+      ? source.getAttribute('data-src-dark')
+      : source.getAttribute('data-src-light');
+    if (!nextSrc) return;
     if (source.getAttribute('src') !== nextSrc) {
       source.setAttribute('src', nextSrc);
       source.setAttribute('type', 'video/quicktime');
@@ -30,6 +34,13 @@
       var playPromise = video.play();
       if (playPromise && playPromise.catch) playPromise.catch(function () {});
     }
+  }
+
+  function loadHeroVideo() {
+    var video = document.getElementById('heroVideo');
+    if (!video || video.getAttribute('data-video-ready') === 'true') return;
+    video.setAttribute('data-video-ready', 'true');
+    setHeroVideo(document.documentElement.getAttribute('data-theme') || 'light');
   }
 
   function applyTheme(theme) {
@@ -40,6 +51,11 @@
 
   var savedTheme = localStorage.getItem('tripiana-theme') || 'light';
   applyTheme(savedTheme);
+  var scheduleHeroVideo = function () {
+    window.setTimeout(loadHeroVideo, 900);
+  };
+  if (document.readyState === 'complete') scheduleHeroVideo();
+  else window.addEventListener('load', scheduleHeroVideo, { once: true });
   if (themeButton) {
     themeButton.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme') || 'light';
