@@ -23,13 +23,14 @@
     if (video.getAttribute('data-video-ready') !== 'true') return;
     var source = video.querySelector('source');
     if (!source) return;
-    var nextSrc = theme === 'dark'
-      ? source.getAttribute('data-src-dark')
-      : source.getAttribute('data-src-light');
+    var isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/i.test(window.location.hostname) || window.location.protocol === 'file:';
+    var nextSrc = isLocal
+      ? source.getAttribute('data-src-local')
+      : source.getAttribute('data-src-production');
     if (!nextSrc) return;
     if (source.getAttribute('src') !== nextSrc) {
       source.setAttribute('src', nextSrc);
-      source.setAttribute('type', 'video/quicktime');
+      source.setAttribute('type', 'video/mp4');
       video.load();
       var playPromise = video.play();
       if (playPromise && playPromise.catch) playPromise.catch(function () {});
@@ -39,6 +40,8 @@
   function loadHeroVideo() {
     var video = document.getElementById('heroVideo');
     if (!video || video.getAttribute('data-video-ready') === 'true') return;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection && connection.saveData) return;
     video.setAttribute('data-video-ready', 'true');
     setHeroVideo(document.documentElement.getAttribute('data-theme') || 'light');
   }
@@ -52,10 +55,32 @@
   var savedTheme = localStorage.getItem('tripiana-theme') || 'light';
   applyTheme(savedTheme);
   var scheduleHeroVideo = function () {
-    window.setTimeout(loadHeroVideo, 900);
+    var run = function () { window.setTimeout(loadHeroVideo, 2400); };
+    if ('requestIdleCallback' in window) window.requestIdleCallback(run, { timeout: 4000 });
+    else run();
   };
   if (document.readyState === 'complete') scheduleHeroVideo();
   else window.addEventListener('load', scheduleHeroVideo, { once: true });
+
+  function loadFooterBackground() {
+    var footer = document.querySelector('.site-footer');
+    if (!footer) return;
+    var showFooterBg = function () { footer.classList.add('footer-bg-ready'); };
+    if ('IntersectionObserver' in window) {
+      var footerIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            showFooterBg();
+            footerIo.disconnect();
+          }
+        });
+      }, { rootMargin: '700px 0px' });
+      footerIo.observe(footer);
+    } else {
+      showFooterBg();
+    }
+  }
+  loadFooterBackground();
   if (themeButton) {
     themeButton.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme') || 'light';

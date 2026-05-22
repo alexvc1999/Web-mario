@@ -261,6 +261,13 @@ textarea {
   display: block;
   object-fit: contain;
 }
+
+body > section:not(.hero),
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
+}
+
 .hero-photo {
   position: absolute;
   inset: 0;
@@ -4139,9 +4146,14 @@ body > section {
 .site-footer {
   background:
     linear-gradient(90deg, rgba(18, 4, 10, 0.22), rgba(18, 4, 10, 0.12)),
-    url("fotos web/fondo-cemento-footer.jpg") center/cover no-repeat !important;
+    #4b182c !important;
   color: var(--white);
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.42);
+}
+.site-footer.footer-bg-ready {
+  background:
+    linear-gradient(90deg, rgba(18, 4, 10, 0.22), rgba(18, 4, 10, 0.12)),
+    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
 }
 .footer-texture {
   display: none !important;
@@ -4584,8 +4596,14 @@ body > section {
 [data-theme="dark"] .site-footer {
   background:
     linear-gradient(90deg, rgba(10, 0, 0, 0.28), rgba(10, 0, 0, 0.16)),
-    url("fotos web/fondo-cemento-footer.jpg") center/cover no-repeat !important;
+    #240000 !important;
   color: #f3f0e7;
+}
+
+[data-theme="dark"] .site-footer.footer-bg-ready {
+  background:
+    linear-gradient(90deg, rgba(10, 0, 0, 0.28), rgba(10, 0, 0, 0.16)),
+    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
 }
 
 [data-theme="dark"] .footer-texture {
