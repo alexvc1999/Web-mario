@@ -397,11 +397,12 @@ body > section:not(.hero),
   top: 0;
   z-index: 200;
   width: 100%;
-  min-height: 84px;
-  display: flex;
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
   align-items: center;
-  padding: 14px var(--pad);
-  gap: 32px;
+  padding: 7px var(--pad);
+  gap: clamp(18px, 2vw, 32px);
   flex-wrap: nowrap;
 }
 .site-header.hdr-white {
@@ -413,6 +414,7 @@ body > section:not(.hero),
 }
 
 .logo {
+  grid-column: 1;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -452,11 +454,11 @@ body > section:not(.hero),
 }
 
 .site-nav {
-  flex: 1;
+  grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(14px, 2.2vw, 32px);
+  gap: clamp(18px, 2vw, 30px);
   flex-wrap: wrap;
 }
 .site-nav a {
@@ -490,8 +492,10 @@ body > section:not(.hero),
 }
 
 .header-actions {
+  grid-column: 3;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   flex-shrink: 0;
 }
@@ -1757,6 +1761,7 @@ body > section:not(.hero),
     --pad: 18px;
   }
   .site-header {
+    display: flex;
     padding: 12px 18px;
     gap: 14px;
     min-height: 70px;
@@ -4037,6 +4042,43 @@ body > section {
 
 /* Ajustes globales solicitados */
 .site-header .logo-icon {
+  display: block !important;
+  color: var(--cream);
+  filter: brightness(0) saturate(100%) invert(94%) sepia(15%) saturate(250%)
+    hue-rotate(5deg) brightness(105%) contrast(92%) !important;
+}
+.site-header.hdr-crimson .logo-name,
+.site-header.hdr-crimson .logo-sub {
+  color: var(--cream) !important;
+}
+.site-header .logo {
+  width: clamp(292px, 25vw, 405px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: url("fotos web/Logo_Horizontal_Blanco.svg") left center / contain
+    no-repeat;
+}
+.site-header .logo-text {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+.site-header .logo-icon {
+  display: none !important;
+}
+.site-footer .footer-logo {
+  width: clamp(270px, 23vw, 380px);
+  height: 86px;
+  margin-bottom: 18px;
+  background: url("fotos web/Logo_Horizontal_Blanco.svg") left center / contain
+    no-repeat;
+}
+.site-footer .footer-logo-icon,
+.site-footer .footer-logo-text {
   display: none !important;
 }
 .site-nav a[href="blog.html"] {
@@ -4690,6 +4732,11 @@ body > section {
 }
 
 @media (max-width: 900px) {
+  .site-header .logo {
+    width: clamp(190px, 30vw, 250px);
+    height: 56px;
+  }
+
   .hero,
   .hero:not(.hero-home) {
     min-height: clamp(390px, 62vh, 560px);
@@ -4697,8 +4744,281 @@ body > section {
 }
 
 @media (max-width: 720px) {
+  .site-header .logo {
+    width: clamp(150px, 44vw, 210px);
+    height: 46px;
+  }
+
   .hero,
   .hero:not(.hero-home) {
     min-height: clamp(380px, 64vh, 520px);
+  }
+}
+
+/* Footer Figma */
+.site-footer,
+.site-footer.footer-bg-ready {
+  position: relative;
+  margin-top: clamp(96px, 12vw, 160px);
+  min-height: clamp(500px, 48vw, 610px);
+  overflow: visible !important;
+  content-visibility: visible !important;
+  contain: none !important;
+  z-index: 80;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(83, 5, 34, 0.2), rgba(83, 5, 34, 0.06)),
+    url("fotos web/fondo cemento.png") center/cover no-repeat,
+    #8a124b !important;
+}
+
+.footer-nl {
+  display: grid !important;
+  grid-template-columns: minmax(360px, 570px) minmax(260px, 1fr);
+  align-items: start;
+  gap: clamp(32px, 6vw, 86px);
+  min-height: clamp(124px, 12vw, 156px);
+  padding: clamp(30px, 3.4vw, 44px) clamp(32px, 8vw, 120px) 0 !important;
+  border-bottom: 1px solid rgba(243, 240, 231, 0.2);
+  overflow: visible !important;
+  position: static !important;
+}
+
+.footer-nl-left {
+  max-width: 570px;
+}
+
+.footer-nl-label {
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: clamp(14px, 0.45vw + 12px, 17px);
+  font-weight: 600;
+}
+
+.footer-nl-form {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) minmax(170px, 1fr) 34px;
+  align-items: center;
+  gap: 14px;
+  max-width: 580px;
+}
+
+.footer-input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 20px;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: #8a124b !important;
+  box-shadow: none !important;
+}
+
+.footer-input::placeholder {
+  color: rgba(138, 18, 75, 0.58) !important;
+}
+
+.footer-check-btn {
+  width: 18px;
+  height: 18px;
+  color: #8a124b;
+  background: #fff;
+  align-self: center;
+}
+
+.footer-check-btn svg {
+  width: 10px;
+  height: 10px;
+}
+
+.footer-bouquet {
+  position: absolute !important;
+  top: 0 !important;
+  right: clamp(58px, 9vw, 154px) !important;
+  bottom: auto !important;
+  z-index: 120 !important;
+  width: clamp(250px, 26vw, 405px) !important;
+  transform: translateY(-52%) !important;
+  pointer-events: none;
+}
+
+.footer-bouquet .img-ph {
+  width: 100%;
+  aspect-ratio: 0.82;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.footer-bouquet .img-ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  filter: drop-shadow(0 28px 26px rgba(0, 0, 0, 0.26));
+}
+
+.footer-main {
+  display: grid !important;
+  grid-template-columns: minmax(260px, 330px) 1fr;
+  gap: clamp(48px, 7vw, 110px);
+  padding: clamp(42px, 4.4vw, 62px) clamp(32px, 8vw, 120px) clamp(38px, 4.4vw, 58px) !important;
+}
+
+.site-footer .footer-logo {
+  width: clamp(185px, 15vw, 250px);
+  height: 58px;
+  margin-bottom: 24px;
+}
+
+.footer-brand-desc {
+  max-width: 330px;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(14px, 0.45vw + 12px, 17px);
+  line-height: 1.62;
+}
+
+.footer-schedule-inline {
+  position: absolute;
+  top: clamp(72px, 6vw, 96px);
+  left: clamp(560px, 40vw, 720px);
+  max-width: 250px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(11px, 0.3vw + 10px, 13px);
+  line-height: 1.35;
+}
+
+.footer-schedule-inline strong {
+  margin-bottom: 2px;
+  font-size: inherit;
+}
+
+.footer-social {
+  gap: 18px;
+}
+
+.footer-social-btn {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.footer-links-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+  gap: clamp(38px, 7vw, 118px);
+  padding-top: 74px;
+}
+
+.footer-link-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footer-link-col a {
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(13px, 0.42vw + 11px, 16px);
+  font-weight: 400;
+}
+
+.footer-bottom {
+  margin: 0 clamp(32px, 8vw, 120px);
+  padding: 22px 0 !important;
+  border-top: 1px solid rgba(243, 240, 231, 0.7);
+}
+
+.footer-bottom span,
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(13px, 0.35vw + 11px, 15px);
+}
+
+body > section {
+  z-index: 0;
+}
+
+[data-theme="dark"] .site-footer,
+[data-theme="dark"] .site-footer.footer-bg-ready {
+  background:
+    linear-gradient(90deg, rgba(83, 5, 34, 0.2), rgba(83, 5, 34, 0.06)),
+    url("fotos web/fondo cemento.png") center/cover no-repeat,
+    #8a124b !important;
+}
+
+[data-theme="dark"] .site-footer .footer-input {
+  background: #fff !important;
+  color: #8a124b !important;
+  border: 0 !important;
+}
+
+[data-theme="dark"] .site-footer .footer-input::placeholder {
+  color: rgba(138, 18, 75, 0.58) !important;
+}
+
+[data-theme="dark"] .site-footer .footer-check-btn {
+  background: #fff !important;
+  color: #8a124b !important;
+}
+
+@media (max-width: 900px) {
+  .footer-nl,
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bouquet {
+    width: clamp(190px, 36vw, 290px) !important;
+    right: clamp(20px, 7vw, 54px) !important;
+  }
+
+  .footer-schedule-inline {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .footer-links-grid {
+    padding-top: 0;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer {
+    margin-top: 84px;
+  }
+
+  .footer-nl,
+  .footer-main {
+    padding-inline: 24px !important;
+  }
+
+  .footer-nl-form {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-check-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer-bouquet {
+    top: -76px !important;
+    width: 180px !important;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    margin-inline: 24px;
   }
 }
