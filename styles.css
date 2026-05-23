@@ -4242,6 +4242,20 @@ body > section {
   text-wrap: balance;
 }
 
+.cart-hero {
+  justify-content: center;
+  text-align: center;
+}
+
+.cart-hero .hero-content {
+  max-width: 100% !important;
+  padding-inline: var(--pad);
+}
+
+.cart-hero .hero-title {
+  margin-inline: auto;
+}
+
 @media (max-width: 720px) {
   .hero .hero-title {
     max-width: 100%;
@@ -4882,9 +4896,9 @@ body > section {
 }
 
 .footer-schedule-inline {
-  position: absolute;
-  top: clamp(72px, 6vw, 96px);
-  left: clamp(560px, 40vw, 720px);
+  position: static;
+  align-self: center;
+  justify-self: start;
   max-width: 250px;
   margin: 0;
   padding: 0;
