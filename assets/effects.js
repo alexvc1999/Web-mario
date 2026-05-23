@@ -20,21 +20,25 @@
   function setHeroVideo(theme) {
     var video = document.getElementById('heroVideo');
     if (!video) return;
-    if (video.getAttribute('data-video-ready') !== 'true') return;
+    video.setAttribute('data-video-ready', 'true');
     var source = video.querySelector('source');
     if (!source) return;
+    var hero = video.closest('.hero');
     var isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/i.test(window.location.hostname) || window.location.protocol === 'file:';
-    var nextSrc = isLocal
+    var isDark = theme === 'dark';
+    var themedSrc = isDark ? source.getAttribute('data-src-dark') : source.getAttribute('data-src-light');
+    var nextSrc = themedSrc || (isLocal
       ? source.getAttribute('data-src-local')
-      : source.getAttribute('data-src-production');
+      : source.getAttribute('data-src-production'));
     if (!nextSrc) return;
     if (source.getAttribute('src') !== nextSrc) {
+      if (hero) hero.classList.remove('hero-video-failed');
       source.setAttribute('src', nextSrc);
       source.setAttribute('type', 'video/mp4');
       video.load();
-      var playPromise = video.play();
-      if (playPromise && playPromise.catch) playPromise.catch(function () {});
     }
+    var playPromise = video.play();
+    if (playPromise && playPromise.catch) playPromise.catch(function () {});
   }
 
   function loadHeroVideo() {
@@ -54,13 +58,7 @@
 
   var savedTheme = localStorage.getItem('tripiana-theme') || 'light';
   applyTheme(savedTheme);
-  var scheduleHeroVideo = function () {
-    var run = function () { window.setTimeout(loadHeroVideo, 2400); };
-    if ('requestIdleCallback' in window) window.requestIdleCallback(run, { timeout: 4000 });
-    else run();
-  };
-  if (document.readyState === 'complete') scheduleHeroVideo();
-  else window.addEventListener('load', scheduleHeroVideo, { once: true });
+  loadHeroVideo();
 
   function loadFooterBackground() {
     var footer = document.querySelector('.site-footer');
@@ -208,15 +206,20 @@
   // 4) Parallax suave de la foto/video del hero
   var heroPhoto = document.querySelector('.hero .hero-photo');
   if (heroPhoto && heroPhoto.tagName === 'VIDEO') {
+    var markVideoReady = function () {
+      if (heroPhoto.videoWidth && heroPhoto.videoHeight) {
+        heroPhoto.closest('.hero').classList.remove('hero-video-failed');
+      }
+    };
     var markVideoFailed = function () {
-      if (!heroPhoto.videoWidth || !heroPhoto.videoHeight) {
+      if (heroPhoto.getAttribute('data-video-ready') === 'true' && !heroPhoto.videoWidth && !heroPhoto.videoHeight) {
         heroPhoto.closest('.hero').classList.add('hero-video-failed');
       }
     };
     heroPhoto.addEventListener('error', markVideoFailed);
-    heroPhoto.addEventListener('loadedmetadata', markVideoFailed);
-    heroPhoto.addEventListener('loadeddata', markVideoFailed);
-    window.setTimeout(markVideoFailed, 1800);
+    heroPhoto.addEventListener('loadedmetadata', markVideoReady);
+    heroPhoto.addEventListener('loadeddata', markVideoReady);
+    window.setTimeout(markVideoFailed, 4200);
   }
 
   if (heroPhoto && !reduced) {

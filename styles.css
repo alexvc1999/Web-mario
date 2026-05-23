@@ -619,7 +619,7 @@ body > section:not(.hero),
   opacity: 0.92;
   margin-bottom: 30px;
   max-width: 520px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .hero-body em {
   font-style: italic;
@@ -2022,9 +2022,9 @@ textarea:focus-visible {
   background:
     linear-gradient(
       90deg,
-      rgba(16, 6, 10, 0.9) 0%,
-      rgba(16, 6, 10, 0.58) 44%,
-      rgba(16, 6, 10, 0.35) 100%
+      rgba(16, 6, 10, 0.62) 0%,
+      rgba(16, 6, 10, 0.34) 44%,
+      rgba(16, 6, 10, 0.16) 100%
     ),
     url("fotos web/coche con flores ok.jpg") center/cover no-repeat,
     var(--hero-dark);
@@ -2058,7 +2058,7 @@ textarea:focus-visible {
   inset: -2px;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.65));
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.34));
 }
 .hero-photo {
   z-index: 0;
@@ -2066,7 +2066,7 @@ textarea:focus-visible {
   animation: heroKenBurns 18s ease-in-out infinite alternate;
   will-change: transform;
   transition: transform 0.1s linear;
-  filter: brightness(0.55) saturate(108%);
+  filter: brightness(0.82) saturate(108%);
 }
 @keyframes heroKenBurns {
   from {
@@ -2873,18 +2873,11 @@ body::before {
   background:
     linear-gradient(
       90deg,
-      rgba(28, 12, 18, 0.78) 0%,
-      rgba(47, 18, 28, 0.48) 42%,
-      rgba(0, 0, 0, 0.2) 100%
+      rgba(28, 12, 18, 0.46) 0%,
+      rgba(47, 18, 28, 0.26) 42%,
+      rgba(0, 0, 0, 0.08) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.62)),
-    repeating-linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.08) 0,
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px,
-      transparent 22px
-    );
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.34));
   mix-blend-mode: normal;
   opacity: 1;
   transform: translate3d(var(--hero-pointer-x, 0), var(--hero-pointer-y, 0), 0)
@@ -2893,12 +2886,12 @@ body::before {
 }
 .hero::after {
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.64) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.24), transparent 46%);
-  box-shadow: inset 0 -90px 90px -80px rgba(0, 0, 0, 0.9);
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.32) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent 46%);
+  box-shadow: inset 0 -90px 90px -80px rgba(0, 0, 0, 0.45);
 }
 .hero-photo {
-  filter: brightness(0.62) saturate(112%) contrast(1.05);
+  filter: brightness(0.86) saturate(112%) contrast(1.04);
   transform: scale(1.1)
     translate3d(calc(var(--hero-pointer-x, 0) * -0.25), var(--hero-shift, 0), 0);
 }
@@ -4199,7 +4192,12 @@ body > section {
   font-size: clamp(18px, 1vw + 12px, 24px) !important;
   line-height: 1.42 !important;
   letter-spacing: 0 !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
+}
+
+.hero-home .hero-body {
+  max-width: 700px !important;
+  text-wrap: balance;
 }
 
 @media (max-width: 720px) {
@@ -4571,14 +4569,14 @@ body > section {
 
 [data-theme="dark"] .hero::before {
   background:
-    radial-gradient(60% 50% at 82% 20%, rgba(215, 192, 222, 0.2), transparent 70%),
-    radial-gradient(54% 64% at 8% 92%, rgba(138, 18, 75, 0.36), transparent 70%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 26%, rgba(10, 0, 0, 0.72) 100%);
+    radial-gradient(60% 50% at 82% 20%, rgba(215, 192, 222, 0.12), transparent 70%),
+    radial-gradient(54% 64% at 8% 92%, rgba(138, 18, 75, 0.2), transparent 70%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 26%, rgba(10, 0, 0, 0.38) 100%);
   mix-blend-mode: screen;
 }
 
 [data-theme="dark"] .hero-photo {
-  filter: brightness(0.46) saturate(1.02) contrast(1.04);
+  filter: brightness(0.74) saturate(1.04) contrast(1.03);
 }
 
 [data-theme="dark"] .contact-icon-circle,
@@ -4628,12 +4626,30 @@ body > section {
 
 .intro-prod-item:hover .img-ph,
 .reco-card:hover .img-ph,
-.catalog-card:hover .img-ph,
-.intro-prod-item:hover .img-ph img,
-.reco-card:hover .img-ph img,
-.catalog-card:hover .img-ph img {
+.catalog-card:hover .img-ph {
   transform: none !important;
   box-shadow: none !important;
+}
+
+.product-card .img-ph img,
+.intro-prod-item .img-ph img,
+.reco-card .img-ph img,
+.catalog-card .img-ph img {
+  transition:
+    transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.32s ease !important;
+  will-change: transform;
+}
+
+.product-card:hover .img-ph img,
+.product-card:focus-within .img-ph img,
+.intro-prod-item:hover .img-ph img,
+.intro-prod-item:focus-within .img-ph img,
+.reco-card:hover .img-ph img,
+.reco-card:focus-within .img-ph img,
+.catalog-card:hover .img-ph img,
+.catalog-card:focus-within .img-ph img {
+  transform: translateY(-10px) scale(1.03) !important;
 }
 
 .intro-prod-item .img-ph::after,
@@ -4664,5 +4680,25 @@ body > section {
   [data-theme="dark"] .site-nav,
   [data-theme="dark"] .hdr-white .site-nav {
     background: #240000 !important;
+  }
+}
+
+/* Heroes unificados: misma altura en inicio y páginas internas */
+.hero,
+.hero:not(.hero-home) {
+  min-height: clamp(460px, 64vh, 720px);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .hero:not(.hero-home) {
+    min-height: clamp(390px, 62vh, 560px);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero,
+  .hero:not(.hero-home) {
+    min-height: clamp(380px, 64vh, 520px);
   }
 }
