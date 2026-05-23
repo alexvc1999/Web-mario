@@ -1,7 +1,13 @@
 videos/
+archivos web-no-utilizar/
+*.pdf
+.DS_Store
 fotos web/opt/
-fotos web/fondo-cemento-footer.jpg
-fotos web/flor-publi-footer.png
-fotos web/fotos-web-11-footer.png
+fotos web/*.jpg
+fotos web/*.png
+fotos web/*.mov
+!fotos web/Logo_Horizontal_Blanco.svg
+!fotos web/optimized/
+!fotos web/optimized/**
 asset-contactsheet-*.png
 pdf-images/

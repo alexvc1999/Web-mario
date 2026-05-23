@@ -1,8 +1,6 @@
 /* ============================================================
    TRIPIANA FLORISTAS — Shared Styles (responsive overhaul)
    ============================================================ */
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap");
-
 :root {
   /* ── Colores base ── */
   --crimson: #8a124b;
@@ -984,6 +982,7 @@ body > section:not(.hero),
   background: none;
   border: none;
   cursor: pointer;
+  text-decoration: none;
   transition: color 0.15s;
 }
 .footer-social-btn:hover {
@@ -2031,7 +2030,7 @@ textarea:focus-visible {
       rgba(16, 6, 10, 0.34) 44%,
       rgba(16, 6, 10, 0.16) 100%
     ),
-    url("fotos web/coche con flores ok.jpg") center/cover no-repeat,
+    url("fotos web/optimized/coche-con-flores-ok.webp") center/cover no-repeat,
     var(--hero-dark);
 }
 .hero-video-failed .hero-photo {
@@ -4070,6 +4069,28 @@ body > section {
 .site-header .logo-icon {
   display: none !important;
 }
+
+.site-header {
+  grid-template-columns: minmax(230px, 0.82fr) minmax(0, auto) minmax(150px, 0.82fr);
+  gap: clamp(12px, 1.3vw, 22px);
+  padding-inline: clamp(28px, 4vw, 64px);
+}
+
+.site-nav {
+  flex-wrap: nowrap;
+  gap: clamp(16px, 1.55vw, 26px);
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.site-nav a {
+  font-size: clamp(13px, 0.72vw, 15px);
+}
+
+.header-actions {
+  min-width: 0;
+}
+
 .site-footer .footer-logo {
   width: clamp(270px, 23vw, 380px);
   height: 86px;
@@ -4189,7 +4210,7 @@ body > section {
 .site-footer.footer-bg-ready {
   background:
     linear-gradient(90deg, rgba(18, 4, 10, 0.22), rgba(18, 4, 10, 0.12)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
+    url("fotos web/optimized/fondo-cemento.webp") center/cover no-repeat !important;
 }
 .footer-texture {
   display: none !important;
@@ -4658,7 +4679,7 @@ body > section {
 [data-theme="dark"] .site-footer.footer-bg-ready {
   background:
     linear-gradient(90deg, rgba(10, 0, 0, 0.28), rgba(10, 0, 0, 0.16)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat !important;
+    url("fotos web/optimized/fondo-cemento.webp") center/cover no-repeat !important;
 }
 
 [data-theme="dark"] .footer-texture {
@@ -4782,7 +4803,7 @@ body > section {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(83, 5, 34, 0.2), rgba(83, 5, 34, 0.06)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat,
+    url("fotos web/optimized/fondo-cemento.webp") center/cover no-repeat,
     #8a124b !important;
 }
 
@@ -4793,7 +4814,7 @@ body > section {
   gap: clamp(32px, 6vw, 86px);
   min-height: clamp(124px, 12vw, 156px);
   padding: clamp(30px, 3.4vw, 44px) clamp(32px, 8vw, 120px) 0 !important;
-  border-bottom: 1px solid rgba(243, 240, 231, 0.2);
+  border-bottom: 0 !important;
   overflow: visible !important;
   position: static !important;
 }
@@ -4879,6 +4900,7 @@ body > section {
   grid-template-columns: minmax(260px, 330px) 1fr;
   gap: clamp(48px, 7vw, 110px);
   padding: clamp(42px, 4.4vw, 62px) clamp(32px, 8vw, 120px) clamp(38px, 4.4vw, 58px) !important;
+  border-top: 0 !important;
 }
 
 .site-footer .footer-logo {
@@ -4963,7 +4985,7 @@ body > section {
 [data-theme="dark"] .site-footer.footer-bg-ready {
   background:
     linear-gradient(90deg, rgba(83, 5, 34, 0.2), rgba(83, 5, 34, 0.06)),
-    url("fotos web/fondo cemento.png") center/cover no-repeat,
+    url("fotos web/optimized/fondo-cemento.webp") center/cover no-repeat,
     #8a124b !important;
 }
 

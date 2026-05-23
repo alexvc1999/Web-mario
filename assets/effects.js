@@ -20,7 +20,7 @@
   function setHeroVideo(theme) {
     var video = document.getElementById('heroVideo');
     if (!video) return;
-    video.setAttribute('data-video-ready', 'true');
+    if (video.getAttribute('data-video-ready') !== 'true') return;
     var source = video.querySelector('source');
     if (!source) return;
     var hero = video.closest('.hero');
@@ -58,7 +58,20 @@
 
   var savedTheme = localStorage.getItem('tripiana-theme') || 'light';
   applyTheme(savedTheme);
-  loadHeroVideo();
+
+  function scheduleHeroVideoLoad() {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadHeroVideo, { timeout: 1600 });
+    } else {
+      window.setTimeout(loadHeroVideo, 700);
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    scheduleHeroVideoLoad();
+  } else {
+    window.addEventListener('load', scheduleHeroVideoLoad, { once: true });
+  }
 
   function loadFooterBackground() {
     var footer = document.querySelector('.site-footer');
