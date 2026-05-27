@@ -2194,6 +2194,18 @@ textarea:focus-visible {
   border-radius: 2px;
 }
 
+.section-title::after,
+.section-title-black::after,
+.reco-title::after,
+.blog-header-title::after,
+.why-us-head::after,
+.collage-right-title::after,
+.intro-heading::after,
+.about-h2::after {
+  content: none !important;
+  display: none !important;
+}
+
 /* ── CARDS: sombra, lift, hover de imagen ── */
 .product-card,
 .reco-card,
@@ -2443,7 +2455,7 @@ textarea:focus-visible {
   transition: width 0.3s ease;
 }
 .footer-link-col a:hover::after {
-  width: 100%;
+  width: min(64px, 72%);
 }
 .footer-check-btn {
   transition:

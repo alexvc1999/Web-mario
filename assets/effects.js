@@ -44,8 +44,6 @@
   function loadHeroVideo() {
     var video = document.getElementById('heroVideo');
     if (!video || video.getAttribute('data-video-ready') === 'true') return;
-    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (connection && connection.saveData) return;
     video.setAttribute('data-video-ready', 'true');
     setHeroVideo(document.documentElement.getAttribute('data-theme') || 'light');
   }
@@ -60,18 +58,15 @@
   applyTheme(savedTheme);
 
   function scheduleHeroVideoLoad() {
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(loadHeroVideo, { timeout: 1600 });
-    } else {
-      window.setTimeout(loadHeroVideo, 700);
-    }
+    window.setTimeout(loadHeroVideo, 120);
   }
 
-  if (document.readyState === 'complete') {
-    scheduleHeroVideoLoad();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleHeroVideoLoad, { once: true });
   } else {
-    window.addEventListener('load', scheduleHeroVideoLoad, { once: true });
+    scheduleHeroVideoLoad();
   }
+  window.addEventListener('pageshow', loadHeroVideo);
 
   function loadFooterBackground() {
     var footer = document.querySelector('.site-footer');

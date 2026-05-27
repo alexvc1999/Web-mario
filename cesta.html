@@ -78,8 +78,8 @@
           <td>
             <div class="cart-qty">
               <button class="cart-qty-btn" onclick="this.nextElementSibling.value=Math.max(0,+this.nextElementSibling.value-1)">−</button>
-              <input class="cart-qty-input" type="number" value="0" min="0">
-              <button class="cart-qty-btn" onclick="this.previousElementSibling.value=+this.previousElementSibling.value+1">+</button>
+              <input class="cart-qty-input" type="number" value="0" min="0" max="9">
+              <button class="cart-qty-btn" onclick="this.previousElementSibling.value=Math.min(9,+this.previousElementSibling.value+1)">+</button>
             </div>
           </td>
           <td><span class="cart-price">45.00€</span></td>
@@ -96,8 +96,8 @@
           <td>
             <div class="cart-qty">
               <button class="cart-qty-btn" onclick="this.nextElementSibling.value=Math.max(0,+this.nextElementSibling.value-1)">−</button>
-              <input class="cart-qty-input" type="number" value="0" min="0">
-              <button class="cart-qty-btn" onclick="this.previousElementSibling.value=+this.previousElementSibling.value+1">+</button>
+              <input class="cart-qty-input" type="number" value="0" min="0" max="9">
+              <button class="cart-qty-btn" onclick="this.previousElementSibling.value=Math.min(9,+this.previousElementSibling.value+1)">+</button>
             </div>
           </td>
           <td><span class="cart-price">60.00€</span></td>
@@ -219,7 +219,7 @@
   <div class="footer-bottom">
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <span>Copyright©2026</span>
-      <span>Derechos reservados — Diseñado por Mario Tripiana</span>
+      <span>Derechos reservados — diseñado y desarrollado por Tripiana SL</span>
     </div>
     <div class="footer-bottom-right">
       <a href="#">Términos y Condiciones</a>
@@ -239,6 +239,7 @@
   })();
 
   (function(){
+    var MAX_CART_ITEMS=9;
     var body=document.getElementById('cartBody');
     var empty=document.getElementById('cartEmpty');
     var subtotal=document.getElementById('cartSubtotal');
@@ -253,12 +254,31 @@
     var couponBtn=document.getElementById('couponBtn');
 
     function getCart(){
-      return JSON.parse(localStorage.getItem('tripianaCesta') || '[]');
+      return normalizeCart(JSON.parse(localStorage.getItem('tripianaCesta') || '[]'));
     }
 
     function saveCart(cart){
-      localStorage.setItem('tripianaCesta',JSON.stringify(cart));
+      localStorage.setItem('tripianaCesta',JSON.stringify(normalizeCart(cart)));
       renderCart();
+    }
+
+    function normalizeCart(cart){
+      var remaining=MAX_CART_ITEMS;
+      return cart.map(function(item){
+        var qty=Math.max(1,parseInt(item.qty,10) || 1);
+        qty=Math.min(qty,remaining);
+        remaining=remaining-qty;
+        item.qty=qty;
+        return item;
+      }).filter(function(item){
+        return item.qty>0;
+      });
+    }
+
+    function cartTotal(cart){
+      return cart.reduce(function(total,item){
+        return total+item.qty;
+      },0);
     }
 
     function money(number){
@@ -327,7 +347,7 @@
             '<td>'+
               '<div class="cart-qty">'+
                 '<button class="cart-qty-btn" data-action="less" data-index="'+index+'">−</button>'+
-                '<input class="cart-qty-input" data-index="'+index+'" type="number" value="'+item.qty+'" min="1">'+
+                '<input class="cart-qty-input" data-index="'+index+'" type="number" value="'+item.qty+'" min="1" max="'+MAX_CART_ITEMS+'">'+
                 '<button class="cart-qty-btn" data-action="more" data-index="'+index+'">+</button>'+
               '</div>'+
             '</td>'+
@@ -353,7 +373,7 @@
         cart[index].qty=Math.max(1,cart[index].qty-1);
       }
 
-      if(action==='more' && cart[index]){
+      if(action==='more' && cart[index] && cartTotal(cart)<MAX_CART_ITEMS){
         cart[index].qty=cart[index].qty+1;
       }
 
@@ -370,7 +390,9 @@
       var index=parseInt(event.target.getAttribute('data-index'),10);
       var qty=parseInt(event.target.value,10);
       if(cart[index]){
-        cart[index].qty=Math.max(1,qty || 1);
+        var otherItems=cartTotal(cart)-cart[index].qty;
+        var maxForItem=Math.max(1,MAX_CART_ITEMS-otherItems);
+        cart[index].qty=Math.min(maxForItem,Math.max(1,qty || 1));
         saveCart(cart);
       }
     });

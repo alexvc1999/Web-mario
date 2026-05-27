@@ -453,7 +453,7 @@
       <div class="footer-bottom">
         <div style="display: flex; gap: 12px; flex-wrap: wrap">
           <span>Copyright©2026</span
-          ><span>Derechos reservados — Diseñado por Mario Tripiana</span>
+          ><span>Derechos reservados — diseñado y desarrollado por Tripiana SL</span>
         </div>
         <div class="footer-bottom-right">
           <a href="#">Términos y Condiciones</a
@@ -473,6 +473,7 @@
         });
       })();
       (function () {
+        var MAX_CART_ITEMS = 9;
         var count = document.getElementById("cartCount");
         var buttons = document.querySelectorAll(".catalog-add-btn");
         function getCart() {
@@ -490,6 +491,11 @@
           });
           if (count) count.textContent = t;
         }
+        function cartTotal(cart) {
+          return cart.reduce(function (total, item) {
+            return total + item.qty;
+          }, 0);
+        }
         buttons.forEach(function (btn) {
           btn.addEventListener("click", function () {
             var card = btn.closest(".catalog-card");
@@ -504,8 +510,15 @@
             var found = cart.find(function (i) {
               return i.name === name;
             });
+            if (cartTotal(cart) >= MAX_CART_ITEMS) {
+              btn.textContent = "Máximo 9";
+              setTimeout(function () {
+                btn.textContent = "Añadir a la cesta";
+              }, 900);
+              return;
+            }
             if (found) {
-              found.qty++;
+              found.qty = Math.min(MAX_CART_ITEMS, found.qty + 1);
             } else {
               cart.push({ name: name, price: price, img: img, qty: 1 });
             }
